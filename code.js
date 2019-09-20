@@ -72,5 +72,5 @@ in the game.
 
 startGame()
 function startGame(){
-
+drawImage
 }
