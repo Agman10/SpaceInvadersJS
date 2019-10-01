@@ -1,5 +1,6 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+
 /*
 ctx.rect(0, 0, canvas.width, canvas.height);
 ctx.fillStyle = "black";
@@ -18,13 +19,14 @@ class Sprite{
 var player = {
     life: 3,
     hit: false,
-    //position: (x, y),
+    x: 6,
+    y: 6,
     shoot: false,
     score: 0,
     sprite: playersprite
 }
 
-var playersprite = new Image()
+var playersprite = new Image('sprites/player.png')
 
 class Player{  
 /*
@@ -33,7 +35,7 @@ ability to shoot, player sprite
 */
 
 constructor(x, y){
-    player.sprite.src = 'sprites/player.png';
+    //player.sprite.src = 'sprites/player.png';
     this.x = x
     this.y = y
 }
@@ -72,8 +74,11 @@ function startGame(){
 }
 startGame();
 /* render(); */
-drawImage(playersprite.src, 5, 6)
+ctx.drawImage(playersprite, 5, 6)
 console.log(player.life)
+console.log(playersprite)
+console.log(player.x)
+console.log(player.y)
 
 
 
