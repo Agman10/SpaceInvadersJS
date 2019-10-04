@@ -1,3 +1,7 @@
+/**
+ * contains the variables
+ */
+
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
@@ -7,13 +11,12 @@ ctx.fillStyle = "black";
 ctx.fill();
 */
 
-class Sprite{
-    /* constructor(url, x, y){
-        this.x = x;
-        this.y = y;
-        this.importSprite(url, "default");
-        //this.width = this.currentSprite.width;
-        //this.height = this.currentSprite.height; */
+
+/* var sprite = {
+    player: '',
+    invader: '',
+    playerbullet: '',
+    invaderbullet: ''
 }
 
 var player = {
@@ -28,57 +31,19 @@ var player = {
 
 var playersprite = new Image('sprites/player.png')
 
-class Player{  
-/*
-the class for the player. contains the life, collision,
-ability to shoot, player sprite
-*/
-
-constructor(x, y){
-    //player.sprite.src = 'sprites/player.png';
-    this.x = x
-    this.y = y
-}
-
-move(x, y){
-    this.x+=x;
-    this.y+=y;
-}
-
-}
-
-class Invader{
-/* 
-the class for the enemies. contains collision, moving pattern,
-shooting pattern, different enemy sprite
-*/
-
-}
-
-class Shelter{
-/*
-This is the spot where you are hiding from the bullets.
-when a shelter gets hit it will turn more and more red untill it
-takes enough hits to make it dissapear, there will be 4 shelters
-in the game.
-*/
-
-}
-
-
 function startGame(){
-    /* this.player.setPosition(4, 4);
+     this.player.setPosition(4, 4);
     ctx.renderImage(player.sprite)
-    player.render(3, 5) */
+    player.render(3, 5) 
 //drawImage
 }
 startGame();
-/* render(); */
+ render(); 
 ctx.drawImage(playersprite, 5, 6)
 console.log(player.life)
 console.log(playersprite)
 console.log(player.x)
-console.log(player.y)
+console.log(player.y) */
 
 
 
@@ -130,3 +95,50 @@ playerSprite(sprite,){
         this.x+=x;
         this.y+=y;
     } */
+
+
+/* class Sprite{
+     constructor(url, x, y){
+        this.x = x;
+        this.y = y;
+        this.importSprite(url, "default");
+        //this.width = this.currentSprite.width;
+        //this.height = this.currentSprite.height; 
+} */
+
+/* class Player{  
+
+the class for the player. contains the life, collision,
+ability to shoot, player sprite
+
+
+constructor(x, y){
+    //player.sprite.src = 'sprites/player.png';
+    this.x = x
+    this.y = y
+}
+
+move(x, y){
+    this.x+=x;
+    this.y+=y;
+}
+
+}
+
+class Invader{
+
+the class for the enemies. contains collision, moving pattern,
+shooting pattern, different enemy sprite
+
+
+}
+
+class Shelter{
+
+This is the spot where you are hiding from the bullets.
+when a shelter gets hit it will turn more and more red untill it
+takes enough hits to make it dissapear, there will be 4 shelters
+in the game.
+
+
+}  */
