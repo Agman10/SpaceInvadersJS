@@ -1,7 +1,7 @@
 /**
  * 
  */
-class Game{
+Game = new class Game{
     /**
      * 
      */
@@ -29,7 +29,7 @@ class Game{
     loop(){
         this.logic();
         this.render();
-
+        console.log("loop de loop :)")
     }
 
     /**
@@ -37,13 +37,22 @@ class Game{
      * ex: collision, movement, shooting, winning, game over,
      */
     logic(){
-
+        player.move()
     }
 
     /**
      * Renders the game sprites (sound maybe?)
      */
     render(){
+        Renderer.clear();
+        Renderer.rect(10, 10, 50, 50, "#f0f");
+        
+        
+        player.draw();
         
     }
+}
+
+window.onload = () => {
+    setInterval(() => Game.loop(), 1000 / 60);
 }

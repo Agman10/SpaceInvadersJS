@@ -2,8 +2,7 @@
  * contains the variables
  */
 
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
+
 
 /*
 ctx.rect(0, 0, canvas.width, canvas.height);
