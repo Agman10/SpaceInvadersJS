@@ -1,6 +1,6 @@
 /**
  * 
  */
-class Bullet{
+class Shelter{
     
 }

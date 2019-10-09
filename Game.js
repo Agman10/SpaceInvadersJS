@@ -30,6 +30,7 @@ Game = new class Game{
         this.logic();
         this.render();
         console.log("loop de loop :)")
+        
     }
 
     /**
@@ -38,6 +39,7 @@ Game = new class Game{
      */
     logic(){
         player.move()
+        console.log(player.posX)
     }
 
     /**

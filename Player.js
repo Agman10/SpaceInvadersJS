@@ -9,14 +9,20 @@ class Player{
 
         this.sprite = sprites.player;
     }
+
+    /**
+     * moves the player
+     */
     move(){
-        this.posX += 2;
-        this.posY += 2;
+        this.posX += 0.2;
+        //this.posY += 2;
     }
 
     draw(){
         Renderer.img(this.sprite, this.posX, this.posY);
     }
 }
-
-player = new Player(40, 30);
+/**
+ * player position
+ */
+player = new Player(224, 420);
