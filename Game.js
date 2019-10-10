@@ -29,7 +29,7 @@ Game = new class Game{
     loop(){
         this.logic();
         this.render();
-        console.log("loop de loop :)")
+        //console.log("loop de loop :)")
         
     }
 
@@ -38,8 +38,15 @@ Game = new class Game{
      * ex: collision, movement, shooting, winning, game over,
      */
     logic(){
-        player.move()
-        console.log(player.posX)
+        if (keysDown[39]){
+            player.move(1.5, 0)
+            console.log("right")
+        }
+        if (keysDown[37]) {
+            player.move(-1.5, 0)
+            console.log("left")
+        }
+        //console.log(player.posX)
     }
 
     /**
@@ -55,6 +62,23 @@ Game = new class Game{
     }
 }
 
+/**
+ * detects key presses
+ */
+var keysDown = []
+
+document.addEventListener("keydown", event => {
+    //console.log(event.keyCode)
+    keysDown[event.keyCode] = true;
+})
+
+document.addEventListener("keyup", event => {
+    keysDown[event.keyCode] = false;
+})
+
+/**
+ * loads the and loops, makes the game run
+ */
 window.onload = () => {
     setInterval(() => Game.loop(), 1000 / 60);
 }

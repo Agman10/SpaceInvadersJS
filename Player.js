@@ -13,8 +13,8 @@ class Player{
     /**
      * moves the player
      */
-    move(){
-        this.posX += 0.2;
+    move(x){
+        this.posX+=x;
         //this.posY += 2;
     }
 
