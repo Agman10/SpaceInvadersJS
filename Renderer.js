@@ -4,12 +4,13 @@
 
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-
+//ctx.scale(2, 2);
 
 Renderer = new class Renderer{
     constructor(){   
         this.canvas = canvas;
         this.ctx = ctx;
+        
     }
 
     rect(x, y, width, height, color){

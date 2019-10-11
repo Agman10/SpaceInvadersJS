@@ -18,6 +18,7 @@ FileLoader = new class FileLoader{
 }
 
 const sprites = {
-    player: FileLoader.importSprite('sprites/player.png')
+    player: FileLoader.importSprite('sprites/player.png'),
+    playerBullet: FileLoader.importSprite('sprites/playerBullet.png')
 }
 
