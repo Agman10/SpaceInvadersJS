@@ -15,15 +15,32 @@ class Player{
         //checks the bullet shot defines it as i
         for(var i = 0; i < this.bullets.length; i++){
             let bullet = this.bullets[i];
+            //this.shoot();
             //console.log(this.bullets[i]);
             //removes a bullet from array when offscreen
-            if(bullet.posY < 65){
+            if(bullet.posY < -4){
                 this.bullets.splice(i, 1);
-                console.log("hello");
+                console.log("erased");
             }
-            
+
+            //removes a bullet when you try to shoot it while too many exist on screen
+            if(this.bullets.length > 2){
+                
+                this.bullets.splice(2, i);
+                console.log("too many")
+            }
+        
+        
         }
         
+        /* for(;this,bullets.length > 2;){
+            if(event.keyCode = 32){
+                console.log("hello")
+            }
+        } */
+        /* for(;2 > this.bullets.length;){
+            this.bullets.splice(i, 1);
+        } */
         //this.lastBullet = this.bullets[this.bullets - 1];
         /* this.bullets.forEach(posY => {
             if(this.bullets.posY === 65){

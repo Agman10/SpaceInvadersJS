@@ -17,8 +17,12 @@ Game = new class Game{
         document.addEventListener("Space", () => {
             
             player.shoot();
+
+            //delays the info so it doesn't print info before bullet deletion
+            setTimeout(function(){
             console.log(player.bullets);
-            
+            console.log("length: " + player.bullets.length);
+            },100);
             
             
             //console.log(player.bullets[player.bullets.length -1]);
