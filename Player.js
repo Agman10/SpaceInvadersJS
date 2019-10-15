@@ -19,20 +19,26 @@ class Player{
             //console.log(this.bullets[i]);
             //removes a bullet from array when offscreen
             if(bullet.posY < -4){
+                this.hit();
+                console.log("lives: " + this.lives);
                 this.bullets.splice(i, 1);
                 console.log("erased");
             }
 
             //removes a bullet when you try to shoot it while too many exist on screen
-            if(this.bullets.length > 2){
+            /* if(this.bullets.length > 2){
                 
                 this.bullets.splice(2, i);
                 console.log("too many")
-            }
+            } */
         
         
         }
         
+        /* if(player.lives == 1){
+            console.log("dead")
+        } */
+
         /* for(;this,bullets.length > 2;){
             if(event.keyCode = 32){
                 console.log("hello")
@@ -67,6 +73,13 @@ class Player{
      */
     shoot(){
         this.bullets.push(new PlayerBullet(this.posX+6, this.posY-6));
+    }
+
+    /**
+     * when the player gets hit 
+     */
+    hit(){
+        this.lives -= 1;
     }
 }
 /**

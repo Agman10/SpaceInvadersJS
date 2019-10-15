@@ -15,14 +15,17 @@ Game = new class Game{
     start(){
         //when space is pressed it wont repeat when hold
         document.addEventListener("Space", () => {
-            
+            //if the bullets onscreen is under 2 player can shoot
+            if(player.bullets.length < 2){
             player.shoot();
-
-            //delays the info so it doesn't print info before bullet deletion
-            setTimeout(function(){
             console.log(player.bullets);
             console.log("length: " + player.bullets.length);
-            },100);
+            }
+
+            //delays the info so it doesn't print info before bullet deletion
+            //setTimeout(function(){
+            
+            //},100);
             
             
             //console.log(player.bullets[player.bullets.length -1]);
@@ -76,7 +79,7 @@ Game = new class Game{
             
             bullet.update();
         });
-        
+
         player.update();
 
         //collision
