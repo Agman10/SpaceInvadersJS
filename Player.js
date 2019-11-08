@@ -1,8 +1,8 @@
 /**
  * the class for the player. contains the life, ability to shoot
  */
-class Player{
-    constructor(x, y){
+class Player {
+    constructor(x, y) {
         this.posX = x;
         this.posY = y;
         this.lives = 3;
@@ -11,14 +11,14 @@ class Player{
         this.sprite = sprites.player;
     }
 
-    update(){
+    update() {
         //checks the bullet shot defines it as i
-        for(var i = 0; i < this.bullets.length; i++){
+        for (var i = 0; i < this.bullets.length; i++) {
             let bullet = this.bullets[i];
             //this.shoot();
             //console.log(this.bullets[i]);
             //removes a bullet from array when offscreen
-            if(bullet.posY < -4){
+            if (bullet.posY < -4) {
                 this.hit();
                 console.log("lives: " + this.lives);
                 this.bullets.splice(i, 1);
@@ -31,10 +31,10 @@ class Player{
                 this.bullets.splice(2, i);
                 console.log("too many")
             } */
-        
-        
+
+
         }
-        
+
         /* if(player.lives == 1){
             console.log("dead")
         } */
@@ -52,33 +52,33 @@ class Player{
             if(this.bullets.posY === 65){
                 console.log("PlayerBullet.posY");
             } 
-            
+             
         }); */
     }
     /**
      * moves the player
      */
-    move(x){
+    move(x) {
         this.posX += x;
         //this.posY += 2;
     }
 
-    draw(){
+    draw() {
         Renderer.img(this.sprite, this.posX, this.posY);
-        
+
     }
 
     /**
      * shoots a new playerbullet from player
      */
-    shoot(){
-        this.bullets.push(new PlayerBullet(this.posX+6, this.posY-6));
+    shoot() {
+        this.bullets.push(new PlayerBullet(this.posX + 6, this.posY - 6));
     }
 
     /**
      * when the player gets hit 
      */
-    hit(){
+    hit() {
         this.lives -= 1;
     }
 }

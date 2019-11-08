@@ -1,121 +1,102 @@
 /**
  * 
  */
-class Game{
+class Game {
     /**
      * 
      */
-    constructor(){
+    constructor() {
         this.running = false;
     }
 
     /**
      * function to star the game
      */
-    start(){
+    start() {
         //when space is pressed it wont repeat when hold
         document.addEventListener("Space", () => {
             //if the bullets onscreen is under 2 player can shoot
-            if(player.bullets.length < 2){
-            player.shoot();
-            console.log(player.bullets);
-            console.log("length: " + player.bullets.length);
+            if (player.bullets.length < 2) {
+                player.shoot();
+                console.log(player.bullets);
+                console.log("length: " + player.bullets.length);
             }
 
             //delays the info so it doesn't print info before bullet deletion
             //setTimeout(function(){
-            
+
             //},100);
-            
-            
+
+
             //console.log(player.bullets[player.bullets.length -1]);
             //console.log("last bullet " + player.lastBullet)
             /* if (Player.bullets.posY = -4){
                 PlayerBullet.posY += 65
             } */
         })
-        
+
         setInterval(() => this.loop(), 1000 / 60);
     }
 
     /**
      * function to stop the game
      */
-    stop(){
+    stop() {
 
     }
 
     /**
      * call logic and render
      */
-    loop(){
+    loop() {
         this.logic();
         this.render();
-        
-        //console.log("loop de loop :)")
-        
+
     }
 
     /**
      * the logic of the game 
      * ex: collision, movement, shooting, winning, game over,
      */
-    logic(){
+    logic() {
         //right key pressed
-        if (keysDown[39]){
+        if (keysDown[39] && player.posX < 211) {
             player.move(1, 0);
             //console.log("right");
         }
 
         //left key pressed
-        if (keysDown[37]) {
+
+        if (keysDown[37] && player.posX > 0) {
             player.move(-1, 0);
             //console.log("left");
         }
 
         //makes the bullet move
-        player.bullets.forEach(bullet  => {
+        player.bullets.forEach(bullet => {
             //console.log("bullet" + bullet)
-            
+
             bullet.update();
         });
 
         player.update();
 
-        //collision
-        /* if(PlayerBullet.posY = 80){
-            console.log("test")
-        } */
-
-        //space key pressed
-        /* if (keysDown[32]){
-            //playerBullet.onscreen += 1;
-            //player.shoot()
-            //playerBullet.move(-1, 0);
-            player.shoot();
-            console.log("space");
-            console.log("player bullet position: " + playerBullet.posY)
-        }  */
-
-        
-        //console.log(player.posX)
     }
 
     /**
      * Renders the game sprites (sound maybe?)
      */
-    render(){
+    render() {
         Renderer.clear();
         //Renderer.rect(10, 10, 50, 50, "#f0f");
-        
+
         player.draw();
-        
+        //console.log(player.posX)
         //draws the bullet
-        player.bullets.forEach(bullet  => {
+        player.bullets.forEach(bullet => {
             //console.log("bullet" + bullet) 
             bullet.draw();
         });
-        
+
     }
 }
-
