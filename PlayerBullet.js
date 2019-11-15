@@ -6,7 +6,7 @@ class PlayerBullet {
     constructor(x, y) {
         this.posX = x;
         this.posY = y;
-
+        this.lightning = sprites.playerBulletLightning;
         this.sprite = sprites.playerBullet;
     }
     /**
@@ -22,6 +22,7 @@ class PlayerBullet {
 
     draw() {
         Renderer.img(this.sprite, this.posX, this.posY);
+        Renderer.img(this.lightning, this.posX - 3, this.posY - 3);
 
     }
 }

@@ -19,6 +19,7 @@ FileLoader = new class FileLoader {
 const sprites = {
     player: FileLoader.importSprite('sprites/player.png'),
     playerBullet: FileLoader.importSprite('sprites/playerBullet.png'),
+    playerBulletLightning: FileLoader.importSprite('sprites/playerBulletLightning.png'),
     enemy: FileLoader.importSprite('sprites/invaderSprite1.png'),
     sweeper: FileLoader.importSprite('sprites/sweeper.png'),
     sweeperShoot: FileLoader.importSprite('sprites/sweeperShoot.png'),
