@@ -2,27 +2,27 @@
  * the bullet that the player shoots
  * contains: limit of buller on screen, speed of bullet, position
  */
-class PlayerBullet{
-    constructor(x, y){
+class PlayerBullet {
+    constructor(x, y) {
         this.posX = x;
         this.posY = y;
-        
+
         this.sprite = sprites.playerBullet;
     }
     /**
-    * 
-    */
-    update(){
-        this.move(-1);
+     * 
+     */
+    update() {
+        this.move(-2);
     }
 
-    move(y){
+    move(y) {
         this.posY += y;
     }
 
-    draw(){
+    draw() {
         Renderer.img(this.sprite, this.posX, this.posY);
-        
+
     }
 }
 

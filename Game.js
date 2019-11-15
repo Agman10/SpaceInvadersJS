@@ -16,26 +16,16 @@ class Game {
         //when space is pressed it wont repeat when hold
         document.addEventListener("Space", () => {
             //if the bullets onscreen is under 2 player can shoot
-            if (player.bullets.length < 2) {
+            if (player.bullets.length < 3) {
                 player.shoot();
-                console.log(player.bullets);
-                console.log("length: " + player.bullets.length);
+                //console.log(player.bullets);
+                //console.log("length: " + player.bullets.length);
             }
-
-            //delays the info so it doesn't print info before bullet deletion
-            //setTimeout(function(){
-
-            //},100);
-
-
-            //console.log(player.bullets[player.bullets.length -1]);
-            //console.log("last bullet " + player.lastBullet)
-            /* if (Player.bullets.posY = -4){
-                PlayerBullet.posY += 65
-            } */
         })
 
         setInterval(() => this.loop(), 1000 / 60);
+        setInterval(() => this.deathAnimation(), 1000 / 10);
+
     }
 
     /**
@@ -60,27 +50,50 @@ class Game {
      */
     logic() {
         //right key pressed
-        if (keysDown[39] && player.posX < 211) {
-            player.move(1, 0);
-            //console.log("right");
-        }
+        if (player.alive && !player.exploding) {
+            if (keysDown[39] && player.posX < 211) {
+                player.move(1, 0);
+                //console.log("right");
+            }
 
-        //left key pressed
-
-        if (keysDown[37] && player.posX > 0) {
-            player.move(-1, 0);
-            //console.log("left");
+            //left key pressed
+            if (keysDown[37] && player.posX > 0) {
+                player.move(-1, 0);
+                //console.log("left");
+            }
         }
 
         //makes the bullet move
         player.bullets.forEach(bullet => {
-            //console.log("bullet" + bullet)
-
             bullet.update();
         });
 
         player.update();
 
+
+    }
+
+    deathAnimation() {
+
+        if (player.exploding == true) {
+            //console.log(player.exploding)
+            player.explode();
+        }
+
+        if (isOdd(player.explodingFrames) == 1) {
+            player.sprite = sprites.playerExplode2;
+
+        }
+        if (player.explodingFrames == 0) {
+            player.exploding = false
+            player.explodingFrames = 20;
+            if (player.alive) {
+                player.sprite = sprites.player;
+                player.posX = 112;
+                //console.log("reseting position")
+            }
+
+        }
     }
 
     /**
@@ -89,14 +102,21 @@ class Game {
     render() {
         Renderer.clear();
         //Renderer.rect(10, 10, 50, 50, "#f0f");
-
+        //console.log(player.exploding)
         player.draw();
+        enemy.draw();
         //console.log(player.posX)
         //draws the bullet
         player.bullets.forEach(bullet => {
             //console.log("bullet" + bullet) 
             bullet.draw();
         });
+        ctx.font = "10px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText("Lives: " + player.lives, 4, 10);
+
+
+
 
     }
 }

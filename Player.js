@@ -8,7 +8,11 @@ class Player {
         this.lives = 3;
         this.bullets = [];
         this.lastBullet;
+        this.alive = true;
         this.sprite = sprites.player;
+        this.lifeSprite = sprites.lifeIcon;
+        this.explodingFrames = 20;
+        this.exploding = false;
     }
 
     update() {
@@ -20,40 +24,19 @@ class Player {
             //removes a bullet from array when offscreen
             if (bullet.posY < -4) {
                 this.hit();
-                console.log("lives: " + this.lives);
                 this.bullets.splice(i, 1);
-                console.log("erased");
+                //console.log("lives: " + this.lives);
+                //console.log("erased");
+                //this.playerExploding = false;
+
             }
-
-            //removes a bullet when you try to shoot it while too many exist on screen
-            /* if(this.bullets.length > 2){
-                
-                this.bullets.splice(2, i);
-                console.log("too many")
-            } */
-
 
         }
 
-        /* if(player.lives == 1){
-            console.log("dead")
-        } */
+        if (player.lives == 0) {
+            player.dead();
+        }
 
-        /* for(;this,bullets.length > 2;){
-            if(event.keyCode = 32){
-                console.log("hello")
-            }
-        } */
-        /* for(;2 > this.bullets.length;){
-            this.bullets.splice(i, 1);
-        } */
-        //this.lastBullet = this.bullets[this.bullets - 1];
-        /* this.bullets.forEach(posY => {
-            if(this.bullets.posY === 65){
-                console.log("PlayerBullet.posY");
-            } 
-             
-        }); */
     }
     /**
      * moves the player
@@ -65,21 +48,45 @@ class Player {
 
     draw() {
         Renderer.img(this.sprite, this.posX, this.posY);
+        Renderer.img(this.lifeSprite, 5, 20);
+        if (!this.alive) {
+            ctx.font = "20px Arial";
+            ctx.fillStyle = "white"
+            ctx.fillText("Game Over", 65, 100);
 
+        }
     }
 
     /**
      * shoots a new playerbullet from player
      */
     shoot() {
-        this.bullets.push(new PlayerBullet(this.posX + 6, this.posY - 6));
+        if (!this.exploding)
+            this.bullets.push(new PlayerBullet(this.posX + 6, this.posY - 4));
     }
 
     /**
      * when the player gets hit 
      */
     hit() {
-        this.lives -= 1;
+        if (!this.exploding)
+            this.lives -= 1;
+        //this.posX = 112;
+        this.exploding = true;
+        //this.explode()
+
+    }
+
+    explode() {
+        this.sprite = sprites.playerExplode;
+        this.explodingFrames -= 1;
+        //console.log(this.explodingFrames)
+
+    }
+
+    dead() {
+        player.alive = false;
+        //console.log("you are dead")
     }
 }
 /**

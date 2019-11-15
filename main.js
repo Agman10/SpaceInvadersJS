@@ -10,9 +10,13 @@ var keysDown = [];
 /**
  * 
  */
+
+function isOdd(num) {
+    return num % 2;
+}
 document.addEventListener("keydown", event => {
     //console.log(event.keyCode)
-    //   console.log("event code " + event.code)
+    //console.log("event code " + event.code)
     //when space is pressed it doesn't repeat. iit gets the name of the key
     if (!keysDown[event.keyCode]) {
         document.dispatchEvent(new Event(event.code))
