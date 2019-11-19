@@ -22,7 +22,7 @@ class PlayerBullet {
 
     draw() {
         Renderer.img(this.sprite, this.posX, this.posY);
-        Renderer.img(this.lightning, this.posX - 3, this.posY - 3);
+        Renderer.img(this.lightning, this.posX - 2, this.posY - 3);
 
     }
 }
