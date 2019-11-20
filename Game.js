@@ -1,48 +1,30 @@
-/**
- * 
- */
 class Game {
-    /**
-     * 
-     */
     constructor() {
         this.running = false;
     }
 
-    /**
-     * function to star the game
-     */
     start() {
         //when space is pressed it wont repeat when hold
         document.addEventListener("Space", () => {
-            //if the bullets onscreen is under 2 player can shoot
             if (player.bullets.length < 3) {
                 player.shoot();
-
-
-                //console.log(player.bullets);
-                //console.log("length: " + player.bullets.length);
             }
+            
+        });
+        document.addEventListener("KeyA", () => {
             if (sweeper.bullets.length < 1) {
                 sweeper.shoot();
             }
-        })
-
+        });
         setInterval(() => this.loop(), 1000 / 60);
         setInterval(() => this.deathAnimation(), 1000 / 10);
 
     }
 
-    /**
-     * function to stop the game
-     */
     stop() {
 
     }
 
-    /**
-     * call logic and render
-     */
     loop() {
         this.logic();
         this.render();
@@ -84,6 +66,17 @@ class Game {
             bullet.update();
 
         });
+        if (sweeper.shooting == true) {
+            //console.log(player.exploding)
+            sweeper.shootingSprite();
+            if(sweeper.shootingFrames == 0){
+                sweeper.shooting = false;
+                sweeper.shootingFrames = 10;
+                sweeper.sprite = sprites.sweeper
+            }
+        }
+
+        if (!player.alive) sweeper.sprite = sprites.sweeperWin;
 
         sweeper.update();
 
@@ -98,17 +91,15 @@ class Game {
 
         if (isOdd(player.explodingFrames) == 1) {
             player.sprite = sprites.playerExplode2;
-
         }
         if (player.explodingFrames == 0) {
-            player.exploding = false
+            player.exploding = false;
             player.explodingFrames = 20;
             if (player.alive) {
                 player.sprite = sprites.player;
                 player.posX = 112;
                 //console.log("reseting position")
             }
-
         }
     }
 
@@ -121,7 +112,7 @@ class Game {
         //console.log(player.exploding)
         player.draw();
         enemy.draw();
-        sweeper.draw();
+        
         //console.log(player.posX)
         //draws the bullet
         player.bullets.forEach(bullet => {
@@ -133,6 +124,7 @@ class Game {
             bullet.draw();
 
         });
+        sweeper.draw();
         //console.log(sweeper.bullets[0].posY)
 
         ctx.font = "10px Arial";

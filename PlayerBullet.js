@@ -9,9 +9,7 @@ class PlayerBullet {
         this.lightning = sprites.playerBulletLightning;
         this.sprite = sprites.playerBullet;
     }
-    /**
-     * 
-     */
+
     update() {
         this.move(-2);
     }

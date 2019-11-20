@@ -4,9 +4,7 @@ class SweeperBullet {
         this.posY = y;
         this.sprite = sprites.sweeperBullet;
     }
-    /**
-     * 
-     */
+
     update() {
         this.move(2);
     }

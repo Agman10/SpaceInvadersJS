@@ -1,23 +1,19 @@
-/**
- * contains the variables
- */
+window.addEventListener("keydown", function(e) {
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
 var game = new Game();
 
-/**
- * detects key presses
- */
 var keysDown = [];
-/**
- * 
- */
+
 
 function isOdd(num) {
     return num % 2;
 }
 document.addEventListener("keydown", event => {
-    //console.log(event.keyCode)
-    //console.log("event code " + event.code)
-    //when space is pressed it doesn't repeat. iit gets the name of the key
+    //console.log(event.keyCode + " " + event.code)
     if (!keysDown[event.keyCode]) {
         document.dispatchEvent(new Event(event.code))
     }
@@ -29,9 +25,6 @@ document.addEventListener("keyup", event => {
     keysDown[event.keyCode] = false;
 })
 
-/**
- * loads the and loops, makes the game run
- */
 window.onload = () => {
     game.start();
 }
