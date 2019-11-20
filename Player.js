@@ -65,10 +65,12 @@ class Player {
    * when the player gets hit
    */
   hit() {
-    if (!this.exploding && this.alive) this.lives -= 1;
-    //this.posX = 112;
-    this.exploding = true;
-    //this.explode()
+    if (!this.exploding && this.alive) {
+      this.lives -= 1;
+      //this.posX = 112;
+      this.exploding = true;
+      //this.explode()
+    }
   }
 
   explode() {
