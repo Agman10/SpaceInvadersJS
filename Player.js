@@ -23,7 +23,7 @@ class Player {
       //console.log(this.bullets[i]);
       //removes a bullet from array when offscreen
       if (bullet.posY < -4) {
-        this.hit();
+        //this.hit();
         this.bullets.splice(i, 1);
         //console.log("lives: " + this.lives);
         //console.log("erased");

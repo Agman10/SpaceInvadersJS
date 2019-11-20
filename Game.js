@@ -18,8 +18,13 @@ class Game {
             //if the bullets onscreen is under 2 player can shoot
             if (player.bullets.length < 3) {
                 player.shoot();
+
+
                 //console.log(player.bullets);
                 //console.log("length: " + player.bullets.length);
+            }
+            if (sweeper.bullets.length < 1) {
+                sweeper.shoot();
             }
         })
 
@@ -68,8 +73,19 @@ class Game {
             bullet.update();
         });
 
+        /* if (sweeper.bullets[0].posY == player.posY) {
+            console.log("die")
+            //player.hit()
+        } */
+
         player.update();
 
+        sweeper.bullets.forEach(bullet => {
+            bullet.update();
+
+        });
+
+        sweeper.update();
 
     }
 
@@ -105,12 +121,20 @@ class Game {
         //console.log(player.exploding)
         player.draw();
         enemy.draw();
+        sweeper.draw();
         //console.log(player.posX)
         //draws the bullet
         player.bullets.forEach(bullet => {
             //console.log("bullet" + bullet) 
             bullet.draw();
         });
+
+        sweeper.bullets.forEach(bullet => {
+            bullet.draw();
+
+        });
+        //console.log(sweeper.bullets[0].posY)
+
         ctx.font = "10px Arial";
         ctx.fillStyle = "white";
         ctx.fillText("Lives: " + player.lives, 4, 10);
