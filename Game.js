@@ -9,7 +9,7 @@ class Game {
             if (player.bullets.length < 3) {
                 player.shoot();
             }
-            
+
         });
         document.addEventListener("KeyA", () => {
             if (sweeper.bullets.length < 1) {
@@ -38,13 +38,13 @@ class Game {
     logic() {
         //right key pressed
         if (player.alive && !player.exploding) {
-            if (keysDown[39] && player.posX < 211) {
+            if (keysDown[39] && player.x < 211) {
                 player.move(1, 0);
                 //console.log("right");
             }
 
             //left key pressed
-            if (keysDown[37] && player.posX > 0) {
+            if (keysDown[37] && player.x > 0) {
                 player.move(-1, 0);
                 //console.log("left");
             }
@@ -69,7 +69,7 @@ class Game {
         if (sweeper.shooting == true) {
             //console.log(player.exploding)
             sweeper.shootingSprite();
-            if(sweeper.shootingFrames == 0){
+            if (sweeper.shootingFrames == 0) {
                 sweeper.shooting = false;
                 sweeper.shootingFrames = 10;
                 sweeper.sprite = sprites.sweeper
@@ -97,7 +97,7 @@ class Game {
             player.explodingFrames = 20;
             if (player.alive) {
                 player.sprite = sprites.player;
-                player.posX = 112;
+                player.x = 112;
                 //console.log("reseting position")
             }
         }
@@ -112,8 +112,8 @@ class Game {
         //console.log(player.exploding)
         player.draw();
         enemy.draw();
-        
-        //console.log(player.posX)
+
+        //console.log(player.x)
         //draws the bullet
         player.bullets.forEach(bullet => {
             //console.log("bullet" + bullet) 

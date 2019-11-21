@@ -3,8 +3,8 @@
  */
 class Player {
   constructor(x, y) {
-    this.posX = x;
-    this.posY = y;
+    this.x = x;
+    this.y = y;
     this.lives = 3;
     this.bullets = [];
     this.lastBullet;
@@ -22,7 +22,7 @@ class Player {
       //this.shoot();
       //console.log(this.bullets[i]);
       //removes a bullet from array when offscreen
-      if (bullet.posY < -4) {
+      if (bullet.y < -4) {
         //this.hit();
         this.bullets.splice(i, 1);
         //console.log("lives: " + this.lives);
@@ -39,12 +39,12 @@ class Player {
    * moves the player
    */
   move(x) {
-    this.posX += x;
-    //this.posY += 2;
+    this.x += x;
+    //this.y += 2;
   }
 
   draw() {
-    Renderer.img(this.sprite, this.posX, this.posY);
+    Renderer.img(this.sprite, this.x, this.y);
     Renderer.img(this.lifeSprite, 5, 20);
     if (!this.alive) {
       ctx.font = "20px Arial";
@@ -58,7 +58,7 @@ class Player {
    */
   shoot() {
     if (!this.exploding && this.alive)
-      this.bullets.push(new PlayerBullet(this.posX + 6, this.posY - 4));
+      this.bullets.push(new PlayerBullet(this.x + 6, this.y - 4));
   }
 
   /**
@@ -67,7 +67,7 @@ class Player {
   hit() {
     if (!this.exploding && this.alive) {
       this.lives -= 1;
-      //this.posX = 112;
+      //this.x = 112;
       this.exploding = true;
       //this.explode()
     }

@@ -1,7 +1,7 @@
 class SweeperBullet {
     constructor(x, y) {
-        this.posX = x;
-        this.posY = y;
+        this.x = x;
+        this.y = y;
         this.sprite = sprites.sweeperBullet;
     }
 
@@ -10,13 +10,13 @@ class SweeperBullet {
     }
 
     move(y) {
-        this.posY += y;
+        this.y += y;
     }
 
     draw() {
-        Renderer.img(this.sprite, this.posX, this.posY);
+        Renderer.img(this.sprite, this.x, this.y);
 
     }
 }
 
-sweeperBullet = new SweeperBullet(sweeper.posX, sweeper.posY);
+sweeperBullet = new SweeperBullet(sweeper.x, sweeper.y);

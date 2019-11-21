@@ -4,8 +4,8 @@
  */
 class PlayerBullet {
     constructor(x, y) {
-        this.posX = x;
-        this.posY = y;
+        this.x = x;
+        this.y = y;
         this.lightning = sprites.playerBulletLightning;
         this.sprite = sprites.playerBullet;
     }
@@ -15,14 +15,14 @@ class PlayerBullet {
     }
 
     move(y) {
-        this.posY += y;
+        this.y += y;
     }
 
     draw() {
-        Renderer.img(this.sprite, this.posX, this.posY);
-        Renderer.img(this.lightning, this.posX - 2, this.posY - 3);
+        Renderer.img(this.sprite, this.x, this.y);
+        Renderer.img(this.lightning, this.x - 2, this.y - 3);
 
     }
 }
 
-playerBullet = new PlayerBullet(player.posX, player.posY);
+playerBullet = new PlayerBullet(player.x, player.y);

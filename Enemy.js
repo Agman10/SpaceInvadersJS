@@ -4,12 +4,12 @@
  */
 class Enemy {
     constructor(x, y) {
-        this.posX = x;
-        this.posY = y;
+        this.x = x;
+        this.y = y;
         this.sprite = sprites.enemy;
     }
     draw() {
-        Renderer.img(this.sprite, this.posX, this.posY);
+        Renderer.img(this.sprite, this.x, this.y);
     }
 }
 
