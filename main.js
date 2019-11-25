@@ -1,5 +1,5 @@
-window.addEventListener("keydown", function(e) {
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+window.addEventListener("keydown", function (e) {
+    if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
     }
 }, false);
@@ -8,6 +8,7 @@ var game = new Game();
 
 var keysDown = [];
 
+var firstSweeperShot = Math.floor(Math.random() * (80 - 20)) + 20;
 
 function isOdd(num) {
     return num % 2;

@@ -7,12 +7,14 @@ class Sweeper {
         this.shootingFrames = 10;
         this.shooting = false;
         this.direction = "right";
+        this.alive = true;
     }
     update() {
         for (var i = 0; i < this.bullets.length; i++) {
             let bullet = this.bullets[i];
             if (bullet.y > 256) {
                 this.bullets.splice(i, 1);
+                if (player.alive && !player.exploding) this.shoot();
             }
             if (bullet.x < player.x + bullet.sprite.width - 2 &&
                 bullet.x + player.sprite.width - 2 > player.x &&
@@ -20,13 +22,14 @@ class Sweeper {
                 bullet.y + player.sprite.height > player.y /* - 2 */ ) {
                 this.bullets.splice(i, 1);
                 player.hit();
+                if (player.alive && !player.exploding) this.shoot();
             }
         }
 
         if (this.direction == "right") this.move(1);
         if (this.direction == "left") this.move(-1);
 
-        if (this.x == 211) this.changeDirection();
+        if (this.x == 209) this.changeDirection();
         if (this.x == 0) this.changeDirection();
         //if (this.x == 211 && this.direction == "right") this.newDirection();
     }
@@ -39,16 +42,21 @@ class Sweeper {
         }
     }
     move(x) {
-
-        this.x += x;
+        if (this.alive && player.alive) {
+            this.x += x;
+        }
         //console.log(this.direction)
     }
     draw() {
         Renderer.img(this.sprite, this.x, this.y);
     }
     shoot() {
-        this.bullets.push(new SweeperBullet(this.x + 1, this.y + 8));
-        this.shooting = true;
+        if (this.alive) {
+            this.bullets.push(new SweeperBullet(this.x + 1, this.y + 8));
+            this.shooting = true;
+            this.random = Math.floor(Math.random() * 7)
+            //console.log(this.random)
+        }
     }
     shootingSprite() {
         this.sprite = sprites.sweeperShoot;

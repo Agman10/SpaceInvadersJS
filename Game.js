@@ -1,10 +1,13 @@
 class Game {
     constructor() {
         this.running = false;
+        this.frame = 0;
     }
 
     start() {
         //when space is pressed it wont repeat when hold
+
+
         document.addEventListener("Space", () => {
             if (player.bullets.length < 3) {
                 player.shoot();
@@ -72,11 +75,15 @@ class Game {
             if (sweeper.shootingFrames == 0) {
                 sweeper.shooting = false;
                 sweeper.shootingFrames = 10;
-                sweeper.sprite = sprites.sweeper
+                sweeper.sprite = sprites.sweeper;
             }
         }
 
         if (!player.alive) sweeper.sprite = sprites.sweeperWin;
+
+        if (this.frame <= firstSweeperShot) this.frame += 1;
+
+        if (this.frame == firstSweeperShot) sweeper.shoot();
 
         sweeper.update();
 
@@ -95,6 +102,8 @@ class Game {
         if (player.explodingFrames == 0) {
             player.exploding = false;
             player.explodingFrames = 20;
+            if (player.alive && !player.exploding) sweeper.shoot();
+
             if (player.alive) {
                 player.sprite = sprites.player;
                 player.x = 112;
@@ -108,6 +117,8 @@ class Game {
      */
     render() {
         Renderer.clear();
+
+
         //Renderer.rect(10, 10, 50, 50, "#f0f");
         //console.log(player.exploding)
         player.draw();
@@ -124,7 +135,11 @@ class Game {
             bullet.draw();
 
         });
-        sweeper.draw();
+        if (sweeper.alive) {
+            sweeper.draw();
+        }
+
+
         //console.log(sweeper.bullets[0].posY)
 
         ctx.font = "10px Arial";
