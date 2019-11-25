@@ -112,7 +112,7 @@ class Game {
         //console.log(player.exploding)
         player.draw();
         enemy.draw();
-
+        //sweeper.move();
         //console.log(player.x)
         //draws the bullet
         player.bullets.forEach(bullet => {

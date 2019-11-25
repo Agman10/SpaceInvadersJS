@@ -6,6 +6,7 @@ class Sweeper {
         this.bullets = [];
         this.shootingFrames = 10;
         this.shooting = false;
+        this.direction = "right";
     }
     update() {
         for (var i = 0; i < this.bullets.length; i++) {
@@ -21,6 +22,26 @@ class Sweeper {
                 player.hit();
             }
         }
+
+        if (this.direction == "right") this.move(1);
+        if (this.direction == "left") this.move(-1);
+
+        if (this.x == 211) this.changeDirection();
+        if (this.x == 0) this.changeDirection();
+        //if (this.x == 211 && this.direction == "right") this.newDirection();
+    }
+
+    changeDirection() {
+        if (this.direction == "right") {
+            this.direction = "left";
+        } else if (this.direction == "left") {
+            this.direction = "right";
+        }
+    }
+    move(x) {
+
+        this.x += x;
+        //console.log(this.direction)
     }
     draw() {
         Renderer.img(this.sprite, this.x, this.y);
