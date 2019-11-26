@@ -79,6 +79,10 @@ class Game {
             }
         }
 
+        if (sweeper.dieingFrames == 0) {
+            sweeper.alive = false;
+        }
+
         if (!player.alive) sweeper.sprite = sprites.sweeperWin;
 
         if (this.frame <= firstSweeperShot) this.frame += 1;
@@ -117,37 +121,22 @@ class Game {
      */
     render() {
         Renderer.clear();
-
-
-        //Renderer.rect(10, 10, 50, 50, "#f0f");
-        //console.log(player.exploding)
         player.draw();
         enemy.draw();
-        //sweeper.move();
-        //console.log(player.x)
-        //draws the bullet
+
         player.bullets.forEach(bullet => {
-            //console.log("bullet" + bullet) 
             bullet.draw();
         });
 
         sweeper.bullets.forEach(bullet => {
             bullet.draw();
-
         });
+
         if (sweeper.alive) {
             sweeper.draw();
         }
-
-
-        //console.log(sweeper.bullets[0].posY)
-
         ctx.font = "10px Arial";
         ctx.fillStyle = "white";
         ctx.fillText("Lives: " + player.lives, 4, 10);
-
-
-
-
     }
 }

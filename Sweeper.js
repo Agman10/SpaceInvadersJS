@@ -8,6 +8,8 @@ class Sweeper {
         this.shooting = false;
         this.direction = "right";
         this.alive = true;
+        this.dieing = false;
+        this.dieingFrames = 30;
     }
     update() {
         for (var i = 0; i < this.bullets.length; i++) {
@@ -32,6 +34,9 @@ class Sweeper {
         if (this.x == 209) this.changeDirection();
         if (this.x == 0) this.changeDirection();
         //if (this.x == 211 && this.direction == "right") this.newDirection();
+
+        if (this.dieing == true) this.die();
+
     }
 
     changeDirection() {
@@ -42,7 +47,7 @@ class Sweeper {
         }
     }
     move(x) {
-        if (this.alive && player.alive) {
+        if (this.alive && player.alive && !this.dieing) {
             this.x += x;
         }
         //console.log(this.direction)
@@ -51,7 +56,7 @@ class Sweeper {
         Renderer.img(this.sprite, this.x, this.y);
     }
     shoot() {
-        if (this.alive) {
+        if (this.alive && !this.dieing) {
             this.bullets.push(new SweeperBullet(this.x + 1, this.y + 8));
             this.shooting = true;
             this.random = Math.floor(Math.random() * 7)
@@ -61,6 +66,12 @@ class Sweeper {
     shootingSprite() {
         this.sprite = sprites.sweeperShoot;
         this.shootingFrames -= 1;
+    }
+
+    die() {
+        this.sprite = sprites.sweeperDead;
+        this.dieingFrames -= 1;
+        this.move(0);
     }
 }
 
