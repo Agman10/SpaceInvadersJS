@@ -28,7 +28,7 @@ class Sweeper {
             }
         }
 
-        if (this.direction == "right") this.move(1);
+        if (this.direction == "right") this.move(0);
         if (this.direction == "left") this.move(-1);
 
         if (this.x == 209) this.changeDirection();

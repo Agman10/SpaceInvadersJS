@@ -16,18 +16,17 @@ class Player {
   }
 
   update() {
-    //checks the bullet shot defines it as i
     for (var i = 0; i < this.bullets.length; i++) {
       let bullet = this.bullets[i];
-      //this.shoot();
-      //console.log(this.bullets[i]);
-      //removes a bullet from array when offscreen
       if (bullet.y < -4) {
-        //this.hit();
         this.bullets.splice(i, 1);
-        //console.log("lives: " + this.lives);
-        //console.log("erased");
-        //this.playerExploding = false;
+      }
+      if (bullet.x < sweeper.x + sweeper.sprite.width &&
+        bullet.x + bullet.sprite.width > sweeper.x &&
+        bullet.y < sweeper.y + sweeper.sprite.height &&
+        bullet.y + sweeper.sprite.height > sweeper.y) {
+        this.bullets.splice(i, 1);
+        sweeper.dieing = true;
       }
     }
 
@@ -35,12 +34,9 @@ class Player {
       player.dead();
     }
   }
-  /**
-   * moves the player
-   */
+
   move(x) {
     this.x += x;
-    //this.y += 2;
   }
 
   draw() {
@@ -52,18 +48,11 @@ class Player {
       ctx.fillText("Game Over", 65, 100);
     }
   }
-
-  /**
-   * shoots a new playerbullet from player
-   */
   shoot() {
     if (!this.exploding && this.alive)
       this.bullets.push(new PlayerBullet(this.x + 6, this.y - 4));
   }
 
-  /**
-   * when the player gets hit
-   */
   hit() {
     if (!this.exploding && this.alive) {
       this.lives -= 1;
@@ -76,16 +65,11 @@ class Player {
   explode() {
     this.sprite = sprites.playerExplode;
     this.explodingFrames -= 1;
-    //console.log(this.explodingFrames)
   }
 
   dead() {
     player.alive = false;
-    //console.log("you are dead")
   }
 }
-/**
- * player position
- */
 
 player = new Player(112, 210);
