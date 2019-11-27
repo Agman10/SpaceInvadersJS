@@ -13,6 +13,7 @@ class Player {
     this.lifeSprite = sprites.lifeIcon;
     this.explodingFrames = 20;
     this.exploding = false;
+    this.maxBullets = 1;
   }
 
   update() {
@@ -21,10 +22,13 @@ class Player {
       if (bullet.y < -4) {
         this.bullets.splice(i, 1);
       }
-      if (bullet.x < sweeper.x + sweeper.sprite.width &&
+      if (
+        bullet.x < sweeper.x + sweeper.sprite.width &&
         bullet.x + bullet.sprite.width > sweeper.x &&
         bullet.y < sweeper.y + sweeper.sprite.height &&
-        bullet.y + sweeper.sprite.height > sweeper.y) {
+        bullet.y + sweeper.sprite.height > sweeper.y + 8 &&
+        sweeper.alive
+      ) {
         this.bullets.splice(i, 1);
         sweeper.dieing = true;
       }
