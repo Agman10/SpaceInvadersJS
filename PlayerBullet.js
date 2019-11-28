@@ -6,8 +6,11 @@ class PlayerBullet {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.lightning = sprites.playerBulletLightning;
-    this.sprite = sprites.playerBullet;
+    this.color = "green";
+    this.sprite = sprites.playerBulletGreen;
+    this.lightning = sprites.playerBulletGreenLightning;
+    this.spriteBlue = sprites.playerBulletBlue;
+    this.lightningBlue = sprites.playerBulletBlueLightning;
   }
 
   update() {
@@ -19,6 +22,13 @@ class PlayerBullet {
   }
 
   draw() {
+    if (this.color = "green") {
+      this.sprite = sprites.playerBulletGreen;
+      this.lightning = sprites.playerBulletGreenLightning;
+    } else if (this.color = "blue") {
+      this.sprite = sprites.playerBulletBlue;
+      this.lightning = sprites.playerBulletBlueLightning;
+    }
     Renderer.img(this.sprite, this.x, this.y);
     Renderer.img(this.lightning, this.x - 2, this.y - 3);
   }
