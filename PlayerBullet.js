@@ -11,7 +11,7 @@ class PlayerBullet {
   }
 
   update() {
-    this.move(-2);
+    this.move(-4);
   }
 
   move(y) {

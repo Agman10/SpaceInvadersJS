@@ -1,11 +1,10 @@
 /**
  * here is where all sprites, (maybe sound?) is loaded
  */
-
-
-
 FileLoader = new class FileLoader {
-    constructor() {}
+    constructor() {
+        this.playerBulletColor = "green";
+    }
 
     importSprite(path) {
         var sprite = new Image();
