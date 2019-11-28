@@ -6,15 +6,22 @@ class PlayerBullet {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.color = "green";
-    this.sprite = sprites.playerBulletGreen;
-    this.lightning = sprites.playerBulletGreenLightning;
-    this.spriteBlue = sprites.playerBulletBlue;
-    this.lightningBlue = sprites.playerBulletBlueLightning;
+    this.color = "white";
+    this.sprite = sprites.playerBulletWhite;
+    this.lightning = sprites.playerBulletWhiteLightning;
+    /* this.spriteBlue = sprites.playerBulletBlue;
+    this.lightningBlue = sprites.playerBulletBlueLightning; */
   }
 
   update() {
     this.move(-4);
+    /* if (this.color = "white") {
+      this.sprite = sprites.playerBulletWhite;
+      this.lightning = sprites.playerBulletWhiteLightning;
+    } else if (this.color = "green") {
+      this.sprite = sprites.playerBulletGreen;
+      this.lightning = sprites.playerBulletGreenLightning;
+    } */
   }
 
   move(y) {
@@ -22,13 +29,14 @@ class PlayerBullet {
   }
 
   draw() {
-    if (this.color = "green") {
-      this.sprite = sprites.playerBulletGreen;
-      this.lightning = sprites.playerBulletGreenLightning;
-    } else if (this.color = "blue") {
+    /* if (this.color = "white") {
+      this.sprite = sprites.playerBulletWhite;
+      this.lightning = sprites.playerBulletWhiteLightning;
+    }
+    if (this.color = "blue") {
       this.sprite = sprites.playerBulletBlue;
       this.lightning = sprites.playerBulletBlueLightning;
-    }
+    } */
     Renderer.img(this.sprite, this.x, this.y);
     Renderer.img(this.lightning, this.x - 2, this.y - 3);
   }

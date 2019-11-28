@@ -14,6 +14,7 @@ class Player {
     this.explodingFrames = 20;
     this.exploding = false;
     this.maxBullets = 1;
+    this.bulletColor = "white";
   }
 
   update() {

@@ -2,9 +2,7 @@
  * here is where all sprites, (maybe sound?) is loaded
  */
 FileLoader = new class FileLoader {
-    constructor() {
-        this.playerBulletColor = "green";
-    }
+    constructor() {}
 
     importSprite(path) {
         var sprite = new Image();
@@ -18,6 +16,8 @@ FileLoader = new class FileLoader {
 const sprites = {
     player: FileLoader.importSprite('sprites/player.png'),
 
+    playerBulletWhite: FileLoader.importSprite('sprites/bullets/playerBulletWhite.png'),
+    playerBulletWhiteLightning: FileLoader.importSprite('sprites/bullets/playerBulletWhiteLightning.png'),
     playerBulletGreen: FileLoader.importSprite('sprites/bullets/playerBulletGreen.png'),
     playerBulletGreenLightning: FileLoader.importSprite('sprites/bullets/playerBulletGreenLightning.png'),
     playerBulletBlue: FileLoader.importSprite('sprites/bullets/playerBulletBlue.png'),

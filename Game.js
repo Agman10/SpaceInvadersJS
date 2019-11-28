@@ -52,10 +52,12 @@ class Game {
       bullet.update();
     });
 
-    /* if (sweeper.bullets[0].posY == player.posY) {
-            console.log("die")
-            //player.hit()
-        } */
+    /* if (player.bulletColor = "green") {
+      console.log("fasdf")
+      playerBullet.sprite = sprites.playerBulletGreen;
+    } else {
+      console.log("no")
+    } */
 
     player.update();
 
@@ -83,6 +85,11 @@ class Game {
     if (this.frame == firstSweeperShot) sweeper.shoot();
 
     sweeper.update();
+
+    /* if (playerBullet.color = "green") {
+      playerBullet.sprite = sprites.playerBulletWhite;
+      playerBullet.lightning = sprites.playerBulletBlueLightning;
+    } */
   }
 
   deathAnimation() {
