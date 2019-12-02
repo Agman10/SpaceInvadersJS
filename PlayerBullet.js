@@ -6,9 +6,16 @@ class PlayerBullet {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.color = "white";
+    this.color = 0;
     this.sprite = sprites.playerBulletWhite;
-    this.lightning = sprites.playerBulletWhiteLightning;
+    /* sprites.playerBulletGreen,
+      sprites.playerBulletBlue
+    ] */
+    this.lightning = [
+      sprites.playerBulletWhiteLightning,
+      sprites.playerBulletGreenLightning,
+      sprites.playerBulletBlueLightning
+    ]
     /* this.spriteBlue = sprites.playerBulletBlue;
     this.lightningBlue = sprites.playerBulletBlueLightning; */
   }
@@ -27,7 +34,9 @@ class PlayerBullet {
   move(y) {
     this.y += y;
   }
-
+  colorBullet() {
+    green = this.sprite[0]
+  }
   draw() {
     /* if (this.color = "white") {
       this.sprite = sprites.playerBulletWhite;
@@ -37,8 +46,12 @@ class PlayerBullet {
       this.sprite = sprites.playerBulletBlue;
       this.lightning = sprites.playerBulletBlueLightning;
     } */
+    var white = 0;
+    var green = 1;
+    var blue = 2;
     Renderer.img(this.sprite, this.x, this.y);
-    Renderer.img(this.lightning, this.x - 2, this.y - 3);
+    Renderer.img(this.lightning[white], this.x - 2, this.y - 3);
+
   }
 }
 
