@@ -25,7 +25,7 @@ class Player {
       }
       if (
         bullet.x < sweeper.x + sweeper.sprite.width &&
-        bullet.x + bullet.sprite.width > sweeper.x &&
+        bullet.x + playerBullet.width > sweeper.x &&
         bullet.y < sweeper.y + sweeper.sprite.height &&
         bullet.y + sweeper.sprite.height > sweeper.y + 8 &&
         sweeper.alive

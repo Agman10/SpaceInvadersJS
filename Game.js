@@ -21,7 +21,7 @@ class Game {
     setInterval(() => this.deathAnimation(), 1000 / 10);
   }
 
-  stop() {}
+  stop() { }
 
   loop() {
     this.logic();
@@ -52,13 +52,6 @@ class Game {
       bullet.update();
     });
 
-    /* if (player.bulletColor = "green") {
-      console.log("fasdf")
-      playerBullet.sprite = sprites.playerBulletGreen;
-    } else {
-      console.log("no")
-    } */
-
     player.update();
 
     sweeper.bullets.forEach(bullet => {
@@ -86,10 +79,6 @@ class Game {
 
     sweeper.update();
 
-    /* if (playerBullet.color = "green") {
-      playerBullet.sprite = sprites.playerBulletWhite;
-      playerBullet.lightning = sprites.playerBulletBlueLightning;
-    } */
   }
 
   deathAnimation() {
