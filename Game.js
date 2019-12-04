@@ -19,6 +19,7 @@ class Game {
     });
     setInterval(() => this.loop(), 1000 / 60);
     setInterval(() => this.deathAnimation(), 1000 / 10);
+    setInterval(() => this.enemyMovement(), 1000 / 10);
   }
 
   stop() { }
@@ -78,7 +79,6 @@ class Game {
     if (this.frame == firstSweeperShot) sweeper.shoot();
 
     sweeper.update();
-
   }
 
   deathAnimation() {
@@ -101,6 +101,10 @@ class Game {
         //console.log("reseting position")
       }
     }
+  }
+
+  enemyMovement() {
+    enemy.update();
   }
 
   /**
