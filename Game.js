@@ -110,7 +110,6 @@ class Game {
     Renderer.clear();
     player.draw();
     enemy.draw();
-
     player.bullets.forEach(bullet => {
       bullet.draw();
     });

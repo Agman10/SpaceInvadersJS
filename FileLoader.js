@@ -2,12 +2,11 @@
  * here is where all sprites, (maybe sound?) is loaded
  */
 FileLoader = new class FileLoader {
-    constructor() {}
+    constructor() { }
 
     importSprite(path) {
         var sprite = new Image();
         sprite.src = path;
-        //console.log(sprite);
         return sprite;
     }
 
@@ -22,6 +21,12 @@ const sprites = {
     playerBulletGreenLightning: FileLoader.importSprite('sprites/bullets/playerBulletGreenLightning.png'),
     playerBulletBlue: FileLoader.importSprite('sprites/bullets/playerBulletBlue.png'),
     playerBulletBlueLightning: FileLoader.importSprite('sprites/bullets/playerBulletBlueLightning.png'),
+    playerBulletRed: FileLoader.importSprite('sprites/bullets/playerBulletRed.png'),
+    playerBulletRedLightning: FileLoader.importSprite('sprites/bullets/playerBulletRedLightning.png'),
+    playerBulletMagenta: FileLoader.importSprite('sprites/bullets/playerBulletMagenta.png'),
+    playerBulletMagentaLightning: FileLoader.importSprite('sprites/bullets/playerBulletMagentaLightning.png'),
+    playerBulletPurple: FileLoader.importSprite('sprites/bullets/playerBulletPurple.png'),
+    playerBulletPurpleLightning: FileLoader.importSprite('sprites/bullets/playerBulletPurpleLightning.png'),
 
     enemy: FileLoader.importSprite('sprites/invaderSprite1.png'),
     sweeper: FileLoader.importSprite('sprites/sweeper.png'),

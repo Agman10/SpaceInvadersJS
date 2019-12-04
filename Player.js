@@ -14,7 +14,6 @@ class Player {
     this.explodingFrames = 20;
     this.exploding = false;
     this.maxBullets = 1;
-    this.bulletColor = "white";
   }
 
   update() {
@@ -53,6 +52,7 @@ class Player {
       ctx.fillText("Game Over", 65, 100);
     }
   }
+
   shoot() {
     if (!this.exploding && this.alive)
       this.bullets.push(new PlayerBullet(this.x + 6, this.y - 4));
