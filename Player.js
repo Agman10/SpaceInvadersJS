@@ -19,6 +19,7 @@ class Player {
   update() {
     for (var i = 0; i < this.bullets.length; i++) {
       let bullet = this.bullets[i];
+      //let sweeperBullet = sweeper.bullets[i];
       if (bullet.y < -4) {
         this.bullets.splice(i, 1);
       }
@@ -32,6 +33,18 @@ class Player {
         this.bullets.splice(i, 1);
         sweeper.dieing = true;
       }
+      // this is collision when player bullet hits sweeper bullet DO NOT REMOVE
+      /* if (sweeper.alive && sweeper.bullets[0]) {
+        if (
+          bullet.x < sweeper.bullets[i].x + sweeper.bullets[i].sprite.width &&
+          bullet.x + playerBullet.width > sweeper.bullets[i].x &&
+          bullet.y < sweeper.bullets[i].y + sweeper.bullets[i].sprite.height &&
+          bullet.y + sweeper.bullets[i].sprite.height > sweeper.bullets[i].y &&
+          sweeper.alive
+        ) {
+          this.bullets.splice(i, 1);
+        }
+      } */
     }
 
     if (player.lives == 0) {

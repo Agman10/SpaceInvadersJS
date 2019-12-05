@@ -10,8 +10,8 @@ class PlayerBullet {
     this.x = x;
     this.y = y;
     //this.color = white;
-    this.width = 1
-    this.height = 6
+    this.width = 1;
+    this.height = 6;
     this.sprite = [
       sprites.playerBulletWhite,
       sprites.playerBulletGreen,
@@ -19,7 +19,7 @@ class PlayerBullet {
       sprites.playerBulletRed,
       sprites.playerBulletMagenta,
       sprites.playerBulletPurple
-    ]
+    ];
     this.lightning = [
       sprites.playerBulletWhiteLightning,
       sprites.playerBulletGreenLightning,
@@ -27,10 +27,19 @@ class PlayerBullet {
       sprites.playerBulletRedLightning,
       sprites.playerBulletMagentaLightning,
       sprites.playerBulletPurpleLightning
-    ]
+    ];
   }
 
   update() {
+    /* if (
+      this.x < sweeper.bullets[0].x + sweeper.bullets[0].sprite.width &&
+      this.x + this.width > sweeper.bullets[0].x &&
+      this.y < sweeper.bullets[0].y + sweeper.bullets[0].sprite.height &&
+      this.y + sweeper.bullets[0].sprite.height > sweeper.bullets[0].y
+    ) {
+      console.log("die")
+      //this.bullets.splice(i, 1);
+    } */
     this.move(-4);
   }
 

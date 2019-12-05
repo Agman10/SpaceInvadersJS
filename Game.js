@@ -120,6 +120,7 @@ class Game {
 
     sweeper.bullets.forEach(bullet => {
       bullet.draw();
+
     });
 
     if (sweeper.alive) {

@@ -6,6 +6,7 @@ class SweeperBullet {
   }
 
   update() {
+    //console.log(this.y)
     this.move(2);
   }
 
