@@ -28,7 +28,8 @@ const sprites = {
     playerBulletPurple: FileLoader.importSprite('sprites/bullets/playerBulletPurple.png'),
     playerBulletPurpleLightning: FileLoader.importSprite('sprites/bullets/playerBulletPurpleLightning.png'),
 
-    enemy: FileLoader.importSprite('sprites/invaderSprite1.png'),
+    enemy1: FileLoader.importSprite('sprites/invaderSprite1.png'),
+    enemy1frame2: FileLoader.importSprite('sprites/invaderSprite1frame2.png'),
     sweeper: FileLoader.importSprite('sprites/sweeper.png'),
     sweeperShoot: FileLoader.importSprite('sprites/sweeperShoot.png'),
     sweeperDead: FileLoader.importSprite('sprites/sweeperDead.png'),

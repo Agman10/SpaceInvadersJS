@@ -6,7 +6,8 @@ class Enemy {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.sprite = sprites.enemy;
+        this.frame = 2;
+        this.sprite = sprites.enemy1;
         this.direction = "right";
     }
     update() {
@@ -22,6 +23,10 @@ class Enemy {
         } else if (this.x == 0) {
             this.direction = "right";
         }
+    }
+
+    animation() {
+        this.frame++
     }
 
     move(x) {

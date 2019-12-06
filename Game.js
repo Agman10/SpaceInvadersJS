@@ -19,7 +19,8 @@ class Game {
     });
     setInterval(() => this.loop(), 1000 / 60);
     setInterval(() => this.deathAnimation(), 1000 / 10);
-    setInterval(() => this.enemyMovement(), 1000 / 10);
+    setInterval(() => this.enemyMovement(), 1000 / 30);
+    setInterval(() => this.enemyAnimation(), 1000 / 2);
   }
 
   stop() { }
@@ -105,6 +106,18 @@ class Game {
 
   enemyMovement() {
     enemy.update();
+  }
+
+  enemyAnimation() {
+
+    if (enemy.frame == 2) {
+      enemy.sprite = sprites.enemy1frame2;
+      enemy.frame = 0;
+    }
+    if (enemy.frame == 1) {
+      enemy.sprite = sprites.enemy1;
+    }
+    enemy.animation();
   }
 
   /**
