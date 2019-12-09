@@ -10,6 +10,7 @@ class Game {
     document.addEventListener("Space", () => {
       if (player.bullets.length < player.maxBullets) {
         player.shoot();
+        enemy.addEnemy();
       }
     });
     document.addEventListener("KeyA", () => {
@@ -80,6 +81,9 @@ class Game {
     if (this.frame == firstSweeperShot) sweeper.shoot();
 
     sweeper.update();
+
+
+
   }
 
   deathAnimation() {
@@ -106,6 +110,7 @@ class Game {
 
   enemyMovement() {
     enemy.update();
+    //console.log(enemy.x)
   }
 
   enemyAnimation() {
@@ -136,9 +141,14 @@ class Game {
 
     });
 
+    enemy.enemies.forEach(enemy => {
+      enemy.draw();
+    });
+
     if (sweeper.alive) {
       sweeper.draw();
     }
+
     ctx.font = "10px Arial";
     ctx.fillStyle = "white";
     ctx.fillText("Lives: " + player.lives, 4, 10);
