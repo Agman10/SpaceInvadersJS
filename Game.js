@@ -6,7 +6,6 @@ class Game {
 
   start() {
     //when space is pressed it wont repeat when hold
-
     document.addEventListener("Space", () => {
       if (player.bullets.length < player.maxBullets) {
         player.shoot();
@@ -14,9 +13,10 @@ class Game {
       }
     });
     document.addEventListener("KeyA", () => {
-      if (sweeper.bullets.length < sweeper.maxBullets) {
-        sweeper.shoot();
-      }
+      //if (sweeper.bullets.length < sweeper.maxBullets) {
+      enemy.addEnemy();
+      //sweeper.shoot();
+      //}
     });
     setInterval(() => this.loop(), 1000 / 60);
     setInterval(() => this.deathAnimation(), 1000 / 10);
@@ -131,7 +131,8 @@ class Game {
   render() {
     Renderer.clear();
     player.draw();
-    enemy.draw();
+    //enemy.draw();
+    //enemy.addEnemy();
     player.bullets.forEach(bullet => {
       bullet.draw();
     });
