@@ -9,7 +9,7 @@ class Game {
     document.addEventListener("Space", () => {
       if (player.bullets.length < player.maxBullets) {
         player.shoot();
-        enemy.addEnemy();
+        //enemy.addEnemy();
       }
     });
     document.addEventListener("KeyA", () => {

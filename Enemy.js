@@ -83,10 +83,10 @@ class Enemy {
         } else {
             console.log("stop")
         }
-        //console.log(this.enemies.length)
-        for (var i = 0; i < this.enemies.length; i++) {
+        console.log(this.enemies.length)
+        /* for (var i = 0; i < this.enemies.length; i++) {
             console.log(i - 1)
-        }
+        } */
         //console.log(this.enemies[0].x)
         /* for (var i = 0; i < this.enemies.length; i++) {
             let enemies = this.enemies[i]
