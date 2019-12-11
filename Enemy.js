@@ -43,16 +43,20 @@ class Enemy {
                 console.log(this.enemies[i])
             } */
 
+            //this.enemies[0].x = this.x
+            //this.enemies[i > 0 < 11].x = this.enemies[0].x + this.enemies.length * 16;
+
             if (this.direction == "right") {
                 this.enemies[i].move(1)
+            }
+            if (this.enemies[i].x == 0) {
+                this.direction = "right";
             }
             if (this.direction == "left") {
                 this.enemies[i].move(-1)
             }
             if (this.enemies[i].x == 213) {
                 this.direction = "left";
-            } else if (this.enemies[i].x == 0) {
-                this.direction = "right";
             }
             //console.log(this.enemies[i].x)
         }
