@@ -10,6 +10,7 @@ class Enemy {
         this.enemies = new Array();
         this.sprite = sprites.enemy1;
         this.direction = "right";
+        this.rows = 1;
     }
 
     update() {
@@ -46,11 +47,16 @@ class Enemy {
             //this.enemies[0].x = this.x
             //this.enemies[i > 0 < 11].x = this.enemies[0].x + this.enemies.length * 16;
 
-            if (this.direction == "right") {
-                this.enemies[i].move(1)
+            if (this.enemies.length == 10) {
+                this.rows = 2;
+                console.log(this.rows)
             }
+
             if (this.enemies[i].x == 0) {
                 this.direction = "right";
+            }
+            if (this.direction == "right") {
+                this.enemies[i].move(1)
             }
             if (this.direction == "left") {
                 this.enemies[i].move(-1)
@@ -76,17 +82,25 @@ class Enemy {
     }
 
     addEnemy() {
+        this.enemies.push(new Enemy(this.enemies[0].x + this.enemies.length * 16, this.enemies[0].y));
+        /* for (var i = 0; i < this.enemies.length; i++) {
+            if (this.rows == 2) {
+                this.enemies.push(new Enemy(this.enemies[0].x + this.enemies.length * 16, this.enemies[0].y + 16));
+            }
+
+        } */
+        console.log(this.rows)
         //console.log(this.lenght)
 
-        if (this.enemies.length == 0) {
-            this.enemies.push(new Enemy(this.x, this.y));
-        } else if (this.enemies.length > 0 && this.enemies.length < 10) {
+        //if (this.enemies.length == 0) {
+        //this.enemies.push(new Enemy(this.enemies[0].x + this.enemies.length * 16, this.enemies[0].y));
+        /* } else if (this.enemies.length > 0 && this.enemies.length < 10) {
             this.enemies.push(new Enemy(this.enemies[0].x + this.enemies.length * 16, this.enemies[0].y));
         } else if (this.enemies.length == 10) {
             this.enemies.push(new Enemy(this.enemies[0].x, this.enemies[0].y + 16));
         } else {
             console.log("stop")
-        }
+        } */
         console.log(this.enemies.length)
         /* for (var i = 0; i < this.enemies.length; i++) {
             console.log(i - 1)
@@ -117,4 +131,4 @@ class Enemy {
     }
 }
 
-enemy = new Enemy(54, 56)
+enemy = new Enemy(32, 56)

@@ -114,7 +114,6 @@ class Game {
   }
 
   enemyAnimation() {
-
     if (enemy.frame == 2) {
       enemy.sprite = sprites.enemy1frame2;
       enemy.frame = 0;
@@ -122,6 +121,7 @@ class Game {
     if (enemy.frame == 1) {
       enemy.sprite = sprites.enemy1;
     }
+
     enemy.animation();
   }
 

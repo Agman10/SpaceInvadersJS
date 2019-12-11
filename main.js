@@ -28,4 +28,5 @@ document.addEventListener("keyup", event => {
 
 window.onload = () => {
     game.start();
+    enemy.enemies.push(new Enemy(enemy.x, enemy.y));
 }
