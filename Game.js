@@ -61,7 +61,6 @@ class Game {
       bullet.update();
     });
     if (sweeper.shooting == true) {
-      //console.log(player.exploding)
       sweeper.shootingSprite();
       if (sweeper.shootingFrames == 0) {
         sweeper.shooting = false;
@@ -88,7 +87,6 @@ class Game {
 
   deathAnimation() {
     if (player.exploding == true) {
-      //console.log(player.exploding)
       player.explode();
     }
 
@@ -103,14 +101,12 @@ class Game {
       if (player.alive) {
         player.sprite = sprites.player;
         player.x = 112;
-        //console.log("reseting position")
       }
     }
   }
 
   enemyMovement() {
     enemy.update();
-    //console.log(enemy.x)
   }
 
   enemyAnimation() {
@@ -121,18 +117,13 @@ class Game {
     if (enemy.frame == 1) {
       enemy.sprite = sprites.enemy1;
     }
-
     enemy.animation();
   }
 
-  /**
-   * Renders the game sprites (sound maybe?)
-   */
   render() {
     Renderer.clear();
     player.draw();
     //enemy.draw();
-    //enemy.addEnemy();
     player.bullets.forEach(bullet => {
       bullet.draw();
     });

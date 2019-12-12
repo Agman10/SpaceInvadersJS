@@ -29,4 +29,7 @@ document.addEventListener("keyup", event => {
 window.onload = () => {
     game.start();
     enemy.enemies.push(new Enemy(enemy.x, enemy.y));
+    for (var i = 0; i < 49; i++) {
+        enemy.addEnemy();
+    }
 }
