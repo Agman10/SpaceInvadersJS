@@ -11,9 +11,11 @@ class Player {
     this.alive = true;
     this.sprite = sprites.player;
     this.lifeSprite = sprites.lifeIcon;
+    this.lifeSpriteWidth = this.lifeSprite.width + 2
     this.explodingFrames = 20;
     this.exploding = false;
     this.maxBullets = 1;
+    this.bulletColor = 0;
   }
 
   update() {
@@ -58,7 +60,14 @@ class Player {
 
   draw() {
     Renderer.img(this.sprite, this.x, this.y);
-    Renderer.img(this.lifeSprite, 5, 20);
+    for (var i = 0; i < this.lives; i++) {
+      Renderer.img(this.lifeSprite, 5 + i * this.lifeSpriteWidth, 10);
+    }
+    /* if (this.lives >= 1) Renderer.img(this.lifeSprite, 5, 10);
+    if (this.lives >= 2) Renderer.img(this.lifeSprite, 7 + this.lifeSprite.width, 10);
+    if (this.lives >= 3) Renderer.img(this.lifeSprite, 9 + this.lifeSprite.width * 2, 10); */
+
+
     if (!this.alive) {
       ctx.font = "20px Arial";
       ctx.fillStyle = "white";

@@ -14,7 +14,9 @@ class Game {
     });
     document.addEventListener("KeyA", () => {
       //if (sweeper.bullets.length < sweeper.maxBullets) {
-      enemy.addEnemy();
+      //enemy.enemies.pop();
+      enemy.enemies.splice(0, 1);
+      console.log(enemy.enemies.length)
       //sweeper.shoot();
       //}
     });
@@ -110,39 +112,43 @@ class Game {
   }
 
   enemyAnimation() {
-    if (enemy.frame == 2) {
-      enemy.sprite = sprites.enemy1frame2;
-      enemy.frame = 0;
+    for (var i = 0; i < enemy.enemies.length; i++) {
+      if (enemy.enemies[i].frame == 2) {
+        enemy.enemies[i].sprite = sprites.enemy1frame2;
+        enemy.enemies[i].frame = 0;
+      }
+      if (enemy.enemies[i].frame == 1) {
+        enemy.enemies[i].sprite = sprites.enemy1;
+      }
+      enemy.enemies[i].animation();
     }
-    if (enemy.frame == 1) {
-      enemy.sprite = sprites.enemy1;
-    }
-    enemy.animation();
+
   }
 
   render() {
     Renderer.clear();
     player.draw();
     //enemy.draw();
+
     player.bullets.forEach(bullet => {
       bullet.draw();
     });
 
     sweeper.bullets.forEach(bullet => {
       bullet.draw();
-
     });
 
     enemy.enemies.forEach(enemy => {
       enemy.draw();
+
     });
 
     if (sweeper.alive) {
       sweeper.draw();
     }
 
-    ctx.font = "10px Arial";
+    /* ctx.font = "10px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText("Lives: " + player.lives, 4, 10);
+    ctx.fillText("Lives: " + player.lives, 4, 10); */
   }
 }

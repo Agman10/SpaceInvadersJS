@@ -4,12 +4,8 @@
  */
 class PlayerBullet {
   constructor(x, y) {
-    /* var white = 0;
-    var green = 1;
-    var blue = 2; */
     this.x = x;
     this.y = y;
-    //this.color = white;
     this.width = 1;
     this.height = 6;
     this.sprite = [
@@ -57,9 +53,8 @@ class PlayerBullet {
     var red = 3;
     var magenta = 4;
     var purple = 5;
-    this.color = white;
-    Renderer.img(this.sprite[this.color], this.x, this.y);
-    Renderer.img(this.lightning[this.color], this.x - 2, this.y - 3);
+    Renderer.img(this.sprite[player.bulletColor], this.x, this.y);
+    Renderer.img(this.lightning[player.bulletColor], this.x - 2, this.y - 3);
   }
 }
 

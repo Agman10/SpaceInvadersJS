@@ -16,17 +16,21 @@ class Enemy {
 
     update() {
         for (var i = 0; i < this.enemies.length; i++) {
-            if (this.enemies[i].x == 0) {
-                this.direction = "right";
-            }
-            if (this.direction == "right") {
-                this.enemies[i].move(1)
-            }
-            if (this.direction == "left") {
-                this.enemies[i].move(-1)
-            }
-            if (this.enemies[i].x == 213) {
-                this.direction = "left";
+            if (player.alive) {
+                if (this.enemies[i].x == 0) {
+                    this.direction = "right";
+                    this.enemies[i].y += 5
+                }
+                if (this.direction == "right") {
+                    this.enemies[i].move(1)
+                }
+                if (this.direction == "left") {
+                    this.enemies[i].move(-1)
+                }
+                if (this.enemies[i].x == 213) {
+                    this.direction = "left";
+                    this.enemies[i].y += 5
+                }
             }
         }
     }
@@ -39,7 +43,8 @@ class Enemy {
     }
 
     animation() {
-        this.frame++
+        if (player.alive)
+            this.frame++
     }
 
     move(x) {
