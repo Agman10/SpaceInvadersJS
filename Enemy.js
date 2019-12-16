@@ -17,6 +17,7 @@ class Enemy {
     update() {
         for (var i = 0; i < this.enemies.length; i++) {
             if (player.alive) {
+                //this.enemies[i].move(1)
                 if (this.enemies[i].x == 0) {
                     this.direction = "right";
                     this.enemies[i].y += 5
@@ -37,7 +38,7 @@ class Enemy {
 
     addEnemy() {
         this.enemies.push(new Enemy(this.enemies[0].x + this.enemies.length % 10 * 16, this.enemies[0].y + Math.floor(this.enemies.length / this.perRow) * 16));
-
+        //this.enemies.push(new Enemy(32 + this.enemies.length % 10 * 16, 46 + Math.floor(this.enemies.length / this.perRow) * 16));
         //console.log(this.rows)
         //console.log(this.enemies.length)
     }

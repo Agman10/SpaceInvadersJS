@@ -11,7 +11,7 @@ class Player {
     this.alive = true;
     this.sprite = sprites.player;
     this.lifeSprite = sprites.lifeIcon;
-    this.lifeSpriteWidth = this.lifeSprite.width + 2
+    this.lifeSpriteWidth = 9
     this.explodingFrames = 20;
     this.exploding = false;
     this.maxBullets = 1;

@@ -7,7 +7,8 @@ class Sweeper {
     this.shootingFrames = 10;
     this.shooting = false;
     this.direction = "right";
-    this.alive = true;
+    //EDIT THIS TO TRUE LATER
+    this.alive = false;
     this.dieing = false;
     this.dieingFrames = 30;
     this.maxBullets = 1;
