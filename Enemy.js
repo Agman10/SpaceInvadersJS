@@ -19,18 +19,18 @@ class Enemy {
             if (player.alive) {
                 //this.enemies[i].move(1)
                 if (this.enemies[i].x == 0) {
-                    this.direction = "right";
-                    this.enemies[i].y += 5
+                    this.enemies[i].direction = "right";
+                    this.enemies[i].y += 8
                 }
-                if (this.direction == "right") {
+                if (this.enemies[i].direction == "right") {
                     this.enemies[i].move(1)
                 }
-                if (this.direction == "left") {
+                if (this.enemies[i].direction == "left") {
                     this.enemies[i].move(-1)
                 }
                 if (this.enemies[i].x == 213) {
-                    this.direction = "left";
-                    this.enemies[i].y += 5
+                    this.enemies[i].direction = "left";
+                    this.enemies[i].y += 8
                 }
             }
         }

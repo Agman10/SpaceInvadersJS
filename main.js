@@ -13,6 +13,10 @@ var firstSweeperShot = Math.floor(Math.random() * (80 - 20)) + 20;
 function isOdd(num) {
     return num % 2;
 }
+function resetButton() {
+    game.reset();
+
+}
 document.addEventListener("keydown", event => {
     //console.log(event.keyCode + " " + event.code)
     if (!keysDown[event.keyCode]) {
@@ -29,7 +33,20 @@ document.addEventListener("keyup", event => {
 window.onload = () => {
     game.start();
     //enemy.enemies.push(new Enemy(enemy.x, enemy.y));
+
     for (var i = 0; i < 50; i++) {
         enemy.addEnemy();
+    }
+    for (var i = 10; i < 20; i++) {
+        enemy.enemies[i].sprite = sprites.enemy2;
+    }
+    for (var i = 20; i < 30; i++) {
+        enemy.enemies[i].sprite = sprites.enemy3frame1;
+    }
+    for (var i = 30; i < 40; i++) {
+        enemy.enemies[i].sprite = sprites.enemy4;
+    }
+    for (var i = 40; i < 50; i++) {
+        enemy.enemies[i].sprite = sprites.enemy5;
     }
 }

@@ -11,6 +11,7 @@ class Game {
         player.shoot();
         //enemy.addEnemy();
       }
+      if (!player.alive) this.reset()
     });
     document.addEventListener("KeyA", () => {
       //if (sweeper.bullets.length < sweeper.maxBullets) {
@@ -31,6 +32,19 @@ class Game {
   loop() {
     this.logic();
     this.render();
+  }
+
+  reset() {
+    //game.start();
+    this.frame = 0;
+    player = new Player(112, 210)
+    enemy = new Enemy(32, 46)
+    for (var i = 0; i < 50; i++) {
+      enemy.addEnemy();
+    }
+    sweeper = new Sweeper(111, 20);
+    sweeperBullet = new SweeperBullet(sweeper.x, sweeper.y);
+    //sweeper.shoot();
   }
 
   /**
@@ -112,13 +126,53 @@ class Game {
   }
 
   enemyAnimation() {
-    for (var i = 0; i < enemy.enemies.length; i++) {
+    for (var i = 0; i < 10; i++) {
       if (enemy.enemies[i].frame == 2) {
         enemy.enemies[i].sprite = sprites.enemy1frame2;
         enemy.enemies[i].frame = 0;
       }
       if (enemy.enemies[i].frame == 1) {
         enemy.enemies[i].sprite = sprites.enemy1;
+      }
+      enemy.enemies[i].animation();
+    }
+    for (var i = 10; i < 20; i++) {
+      if (enemy.enemies[i].frame == 2) {
+        enemy.enemies[i].sprite = sprites.enemy2frame2;
+        enemy.enemies[i].frame = 0;
+      }
+      if (enemy.enemies[i].frame == 1) {
+        enemy.enemies[i].sprite = sprites.enemy2;
+      }
+      enemy.enemies[i].animation();
+    }
+    for (var i = 20; i < 30; i++) {
+      if (enemy.enemies[i].frame == 2) {
+        enemy.enemies[i].sprite = sprites.enemy3frame2;
+        enemy.enemies[i].frame = 0;
+      }
+      if (enemy.enemies[i].frame == 1) {
+        enemy.enemies[i].sprite = sprites.enemy3frame1;
+      }
+      enemy.enemies[i].animation();
+    }
+    for (var i = 30; i < 40; i++) {
+      if (enemy.enemies[i].frame == 2) {
+        enemy.enemies[i].sprite = sprites.enemy4frame2;
+        enemy.enemies[i].frame = 0;
+      }
+      if (enemy.enemies[i].frame == 1) {
+        enemy.enemies[i].sprite = sprites.enemy4;
+      }
+      enemy.enemies[i].animation();
+    }
+    for (var i = 40; i < 50; i++) {
+      if (enemy.enemies[i].frame == 2) {
+        enemy.enemies[i].sprite = sprites.enemy5frame2;
+        enemy.enemies[i].frame = 0;
+      }
+      if (enemy.enemies[i].frame == 1) {
+        enemy.enemies[i].sprite = sprites.enemy5;
       }
       enemy.enemies[i].animation();
     }

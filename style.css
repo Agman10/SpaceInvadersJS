@@ -13,3 +13,13 @@ body{
     image-rendering: -webkit-crisp-edges; 
     image-rendering: pixelated; 
 }
+button {
+    margin: auto;
+    display: block;
+    color: rgb(200, 200, 200);
+    background-color: black;
+    border-left-color: rgb(200, 200, 200);
+    border-top-color: rgb(200, 200, 200);
+    border-right-color: rgb(200, 200, 200);
+    border-bottom-color: rgb(200, 200, 200);
+}

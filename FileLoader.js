@@ -30,6 +30,16 @@ const sprites = {
 
     enemy1: FileLoader.importSprite('sprites/invaderSprite1.png'),
     enemy1frame2: FileLoader.importSprite('sprites/invaderSprite1frame2.png'),
+    enemy2: FileLoader.importSprite('sprites/invaderSprite2.png'),
+    enemy2frame2: FileLoader.importSprite('sprites/invaderSprite2frame2.png'),
+    enemy3: FileLoader.importSprite('sprites/invaderSprite3.png'),
+    enemy3frame1: FileLoader.importSprite('sprites/invaderSprite3frame1.png'),
+    enemy3frame2: FileLoader.importSprite('sprites/invaderSprite3frame2.png'),
+    enemy4: FileLoader.importSprite('sprites/invaderSprite4.png'),
+    enemy4frame2: FileLoader.importSprite('sprites/invaderSprite4frame2.png'),
+    enemy5: FileLoader.importSprite('sprites/invaderSprite5.png'),
+    enemy5frame2: FileLoader.importSprite('sprites/invaderSprite5frame2.png'),
+
     sweeper: FileLoader.importSprite('sprites/sweeper.png'),
     sweeperShoot: FileLoader.importSprite('sprites/sweeperShoot.png'),
     sweeperDead: FileLoader.importSprite('sprites/sweeperDead.png'),
