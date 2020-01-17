@@ -10,6 +10,7 @@ class Player {
     this.lastBullet;
     this.alive = true;
     this.sprite = sprites.player;
+    this.ghostSprite = sprites.playerGhost;
     this.lifeSprite = sprites.lifeIcon;
     this.lifeSpriteWidth = 9
     this.explodingFrames = 20;
@@ -34,6 +35,17 @@ class Player {
       ) {
         this.bullets.splice(i, 1);
         sweeper.dieing = true;
+      }
+      for (var j = 0; j < enemy.enemies.length; j++) {
+        if (
+          bullet.x < enemy.enemies[j].x + enemy.enemies[j].width &&
+          bullet.x + playerBullet.width > enemy.enemies[j].x &&
+          bullet.y < enemy.enemies[j].y + enemy.enemies[j].height &&
+          bullet.y + enemy.enemies[j].height > enemy.enemies[j].y
+        ) {
+          this.bullets.splice(i, 1);
+          enemy.enemies.splice(j, 1);
+        }
       }
       // this is collision when player bullet hits sweeper bullet DO NOT REMOVE
       /* if (sweeper.alive && sweeper.bullets[0]) {
@@ -60,6 +72,7 @@ class Player {
 
   draw() {
     Renderer.img(this.sprite, this.x, this.y);
+    //Renderer.img(this.ghostSprite, this.x, this.y - 9);
     for (var i = 0; i < this.lives; i++) {
       Renderer.img(this.lifeSprite, 5 + i * this.lifeSpriteWidth, 10);
     }
@@ -96,6 +109,7 @@ class Player {
 
   dead() {
     player.alive = false;
+
   }
 }
 

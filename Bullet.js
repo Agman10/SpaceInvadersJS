@@ -8,6 +8,7 @@ class PlayerBullet {
     this.y = y;
     this.width = 1;
     this.height = 6;
+    this.speed = -4;
     this.sprite = [
       sprites.playerBulletWhite,
       sprites.playerBulletGreen,
@@ -36,7 +37,7 @@ class PlayerBullet {
       console.log("die")
       //this.bullets.splice(i, 1);
     } */
-    this.move(-4);
+    this.move(this.speed);
   }
 
   move(y) {
@@ -58,4 +59,26 @@ class PlayerBullet {
   }
 }
 
+class EnemyBullet extends PlayerBullet {
+  constructor(x, y) {
+    super(x, y);
+    this.width = 3;
+    this.height = 7;
+    this.speed = 4;
+    this.sprite = [
+      sprites.enemyBullet,
+    ];
+    this.lightning = [
+      sprites.enemyBulletLightning,
+    ];
+  }
+  draw() {
+    Renderer.img(this.sprite[0], this.x, this.y);
+    Renderer.img(this.lightning[0], this.x - 2, this.y - 2);
+  }
+}
+
+
+
 playerBullet = new PlayerBullet(player.x, player.y);
+enemyBullet = new EnemyBullet(enemy.x, enemy.y);

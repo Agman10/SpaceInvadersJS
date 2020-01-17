@@ -37,16 +37,19 @@ window.onload = () => {
     for (var i = 0; i < 50; i++) {
         enemy.addEnemy();
     }
+    for (var i = 0; i < 10; i++) {
+        enemy.enemies[i].sprite = sprites.enemy5;
+    }
     for (var i = 10; i < 20; i++) {
-        enemy.enemies[i].sprite = sprites.enemy2;
-    }
-    for (var i = 20; i < 30; i++) {
-        enemy.enemies[i].sprite = sprites.enemy3frame1;
-    }
-    for (var i = 30; i < 40; i++) {
         enemy.enemies[i].sprite = sprites.enemy4;
     }
+    for (var i = 20; i < 30; i++) {
+        enemy.enemies[i].sprite = sprites.enemy3;
+    }
+    for (var i = 30; i < 40; i++) {
+        enemy.enemies[i].sprite = sprites.enemy2;
+    }
     for (var i = 40; i < 50; i++) {
-        enemy.enemies[i].sprite = sprites.enemy5;
+        enemy.enemies[i].sprite = sprites.enemy1;
     }
 }

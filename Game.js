@@ -72,6 +72,7 @@ class Game {
     });
 
     player.update();
+    enemyBullet.update();
 
     sweeper.bullets.forEach(bullet => {
       bullet.update();
@@ -110,6 +111,7 @@ class Game {
       player.sprite = sprites.playerExplode2;
     }
     if (player.explodingFrames == 0) {
+      //player.lives -= 1;
       player.exploding = false;
       player.explodingFrames = 20;
       if (player.alive && !player.exploding) sweeper.shoot();
@@ -117,6 +119,9 @@ class Game {
       if (player.alive) {
         player.sprite = sprites.player;
         player.x = 112;
+      } else {
+        player.sprite = sprites.playerDead;
+        Renderer.img(player.ghostSprite, player.x, player.y - 9);
       }
     }
   }
@@ -126,57 +131,58 @@ class Game {
   }
 
   enemyAnimation() {
-    for (var i = 0; i < 10; i++) {
-      if (enemy.enemies[i].frame == 2) {
-        enemy.enemies[i].sprite = sprites.enemy1frame2;
-        enemy.enemies[i].frame = 0;
+    for (var i = 0; i < enemy.enemies.length; i++) {
+      if (enemy.enemies[i].id < 10) {
+        if (enemy.enemies[i].frame == 2) {
+          enemy.enemies[i].sprite = sprites.enemy5frame2;
+          enemy.enemies[i].frame = 0;
+        }
+        if (enemy.enemies[i].frame == 1) {
+          enemy.enemies[i].sprite = sprites.enemy5;
+        }
+        enemy.enemies[i].animation();
       }
-      if (enemy.enemies[i].frame == 1) {
-        enemy.enemies[i].sprite = sprites.enemy1;
+      if (enemy.enemies[i].id > 9 && enemy.enemies[i].id < 20) {
+        if (enemy.enemies[i].frame == 2) {
+          enemy.enemies[i].sprite = sprites.enemy4frame2;
+          enemy.enemies[i].frame = 0;
+        }
+        if (enemy.enemies[i].frame == 1) {
+          enemy.enemies[i].sprite = sprites.enemy4;
+        }
+        enemy.enemies[i].animation();
       }
-      enemy.enemies[i].animation();
+      if (enemy.enemies[i].id > 19 && enemy.enemies[i].id < 30) {
+        if (enemy.enemies[i].frame == 2) {
+          enemy.enemies[i].sprite = sprites.enemy3frame2;
+          enemy.enemies[i].frame = 0;
+        }
+        if (enemy.enemies[i].frame == 1) {
+          enemy.enemies[i].sprite = sprites.enemy3;
+        }
+        enemy.enemies[i].animation();
+      }
+      if (enemy.enemies[i].id > 29 && enemy.enemies[i].id < 40) {
+        if (enemy.enemies[i].frame == 2) {
+          enemy.enemies[i].sprite = sprites.enemy2frame2;
+          enemy.enemies[i].frame = 0;
+        }
+        if (enemy.enemies[i].frame == 1) {
+          enemy.enemies[i].sprite = sprites.enemy2;
+        }
+        enemy.enemies[i].animation();
+      }
+      if (enemy.enemies[i].id > 39 && enemy.enemies[i].id < 50) {
+        if (enemy.enemies[i].frame == 2) {
+          enemy.enemies[i].sprite = sprites.enemy1frame2;
+          enemy.enemies[i].frame = 0;
+        }
+        if (enemy.enemies[i].frame == 1) {
+          enemy.enemies[i].sprite = sprites.enemy1;
+        }
+        enemy.enemies[i].animation();
+      }
     }
-    for (var i = 10; i < 20; i++) {
-      if (enemy.enemies[i].frame == 2) {
-        enemy.enemies[i].sprite = sprites.enemy2frame2;
-        enemy.enemies[i].frame = 0;
-      }
-      if (enemy.enemies[i].frame == 1) {
-        enemy.enemies[i].sprite = sprites.enemy2;
-      }
-      enemy.enemies[i].animation();
-    }
-    for (var i = 20; i < 30; i++) {
-      if (enemy.enemies[i].frame == 2) {
-        enemy.enemies[i].sprite = sprites.enemy3frame2;
-        enemy.enemies[i].frame = 0;
-      }
-      if (enemy.enemies[i].frame == 1) {
-        enemy.enemies[i].sprite = sprites.enemy3frame1;
-      }
-      enemy.enemies[i].animation();
-    }
-    for (var i = 30; i < 40; i++) {
-      if (enemy.enemies[i].frame == 2) {
-        enemy.enemies[i].sprite = sprites.enemy4frame2;
-        enemy.enemies[i].frame = 0;
-      }
-      if (enemy.enemies[i].frame == 1) {
-        enemy.enemies[i].sprite = sprites.enemy4;
-      }
-      enemy.enemies[i].animation();
-    }
-    for (var i = 40; i < 50; i++) {
-      if (enemy.enemies[i].frame == 2) {
-        enemy.enemies[i].sprite = sprites.enemy5frame2;
-        enemy.enemies[i].frame = 0;
-      }
-      if (enemy.enemies[i].frame == 1) {
-        enemy.enemies[i].sprite = sprites.enemy5;
-      }
-      enemy.enemies[i].animation();
-    }
-
   }
 
   render() {
@@ -187,11 +193,14 @@ class Game {
     player.bullets.forEach(bullet => {
       bullet.draw();
     });
+    enemy.bullets.forEach(bullet => {
+      bullet.draw();
+    });
 
     sweeper.bullets.forEach(bullet => {
       bullet.draw();
     });
-
+    enemyBullet.draw()
     enemy.enemies.forEach(enemy => {
       enemy.draw();
 
