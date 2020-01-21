@@ -17,6 +17,8 @@ class Player {
     this.exploding = false;
     this.maxBullets = 1;
     this.bulletColor = 0;
+    this.ghostY = 0;
+    this.ghosted = false;
   }
 
   update() {
@@ -64,6 +66,7 @@ class Player {
     if (player.lives == 0) {
       player.dead();
     }
+
   }
 
   move(x) {
@@ -105,6 +108,11 @@ class Player {
   explode() {
     this.sprite = sprites.playerExplode;
     this.explodingFrames -= 1;
+  }
+
+  ghost() {
+    player.ghostY++
+    Renderer.img(player.ghostSprite, player.x, player.y - 9 - this.ghostY);
   }
 
   dead() {

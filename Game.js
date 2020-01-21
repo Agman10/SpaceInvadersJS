@@ -25,6 +25,7 @@ class Game {
     setInterval(() => this.deathAnimation(), 1000 / 10);
     setInterval(() => this.enemyMovement(), 1000 / 30);
     setInterval(() => this.enemyAnimation(), 1000 / 2);
+    //setInterval(() => player.ghost(), 1000 / 60);
   }
 
   stop() { }
@@ -72,6 +73,7 @@ class Game {
     });
 
     player.update();
+
     enemyBullet.update();
 
     sweeper.bullets.forEach(bullet => {
@@ -98,8 +100,6 @@ class Game {
 
     sweeper.update();
 
-
-
   }
 
   deathAnimation() {
@@ -121,7 +121,7 @@ class Game {
         player.x = 112;
       } else {
         player.sprite = sprites.playerDead;
-        Renderer.img(player.ghostSprite, player.x, player.y - 9);
+        player.ghosted = true
       }
     }
   }
@@ -189,7 +189,9 @@ class Game {
     Renderer.clear();
     player.draw();
     //enemy.draw();
-
+    if (player.ghosted) {
+      player.ghost()
+    }
     player.bullets.forEach(bullet => {
       bullet.draw();
     });
