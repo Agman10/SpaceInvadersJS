@@ -52,4 +52,5 @@ window.onload = () => {
     for (var i = 40; i < 50; i++) {
         enemy.enemies[i].sprite = sprites.enemy1;
     }
+    enemy.shoot()
 }

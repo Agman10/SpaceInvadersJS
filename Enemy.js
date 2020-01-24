@@ -25,6 +25,7 @@ class Enemy {
     }
 
     update() {
+
         for (var i = 0; i < this.enemies.length; i++) {
             if (player.alive) {
                 //this.enemies[i].move(1)
@@ -42,6 +43,14 @@ class Enemy {
                     this.enemies[i].direction = "left";
                     this.enemies[i].y += 8
                 }
+                for (var j = 0; j < this.bullets.length; j++) {
+                    let bullet = this.bullets[j];
+                    //let sweeperBullet = sweeper.bullets[i];
+                    if (bullet.y > 256) {
+                        this.bullets.splice(j, 1);
+                        this.shoot();
+                    }
+                }
             }
         }
     }
@@ -49,12 +58,29 @@ class Enemy {
     addEnemy() {
         this.enemies.push(new Enemy(this.x + this.enemies.length % 10 * 16,
             this.y + Math.floor(this.enemies.length / this.perRow) * 16, this.id + this.enemies.length));
-        //this.enemies.push(new Enemy(32 + this.enemies.length % 10 * 16, 46 + Math.floor(this.enemies.length / this.perRow) * 16));
-        //console.log(this.rows)
-        //console.log(this.enemies.length)
+    }
+
+    getEnemy(id) {
+        for (let enemy of this.enemies) {
+            if (enemy.id == id) return enemy
+        }
+        return false
     }
     shoot() {
-        this.bullets.push(new EnemyBullet(this.x + 6, this.y - 4));
+        var possibleLocations = []
+        for (let x = 0; x < 10; x++) {
+            for (let y = 4; y >= 0; y--) {
+                let enemy = this.getEnemy(Math.floor(y * 10) + x)
+                if (enemy) {
+                    possibleLocations.push({ x: enemy.x, y: enemy.y })
+                    //console.log(enemy.id)
+                    break
+                }
+            }
+        }
+        let randomEnemy = possibleLocations[Math.floor(Math.random() * possibleLocations.length)]
+        //console.log(possibleLocations)
+        this.bullets.push(new EnemyBullet(randomEnemy.x + 4, randomEnemy.y + 8));
     }
     animation() {
         if (player.alive)

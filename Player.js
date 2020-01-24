@@ -19,6 +19,7 @@ class Player {
     this.bulletColor = 0;
     this.ghostY = 0;
     this.ghosted = false;
+    this.points = 0;
   }
 
   update() {

@@ -64,7 +64,7 @@ class EnemyBullet extends PlayerBullet {
     super(x, y);
     this.width = 3;
     this.height = 7;
-    this.speed = 4;
+    this.speed = 2;
     this.sprite = [
       sprites.enemyBullet,
     ];

@@ -16,7 +16,8 @@ class Game {
     document.addEventListener("KeyA", () => {
       //if (sweeper.bullets.length < sweeper.maxBullets) {
       //enemy.enemies.pop();
-      enemy.enemies.splice(0, 1);
+      //enemy.enemies.splice(0, 1);
+      enemy.shoot()
       console.log(enemy.enemies.length)
       //sweeper.shoot();
       //}
@@ -74,7 +75,9 @@ class Game {
 
     player.update();
 
-    enemyBullet.update();
+    enemy.bullets.forEach(bullet => {
+      bullet.update();
+    });
 
     sweeper.bullets.forEach(bullet => {
       bullet.update();
