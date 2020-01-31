@@ -2,6 +2,7 @@ class Game {
   constructor() {
     this.running = false;
     this.frame = 0;
+    this.deathFrame = 0
   }
 
   start() {
@@ -11,7 +12,7 @@ class Game {
         player.shoot();
         //enemy.addEnemy();
       }
-      if (!player.alive) this.reset()
+      if (!player.alive) this.reset();
     });
     document.addEventListener("KeyA", () => {
       //if (sweeper.bullets.length < sweeper.maxBullets) {
@@ -23,10 +24,6 @@ class Game {
       //}
     });
     setInterval(() => this.loop(), 1000 / 60);
-    setInterval(() => this.deathAnimation(), 1000 / 10);
-    setInterval(() => this.enemyMovement(), 1000 / 30);
-    setInterval(() => this.enemyAnimation(), 1000 / 2);
-    //setInterval(() => player.ghost(), 1000 / 60);
   }
 
   stop() { }
@@ -34,19 +31,18 @@ class Game {
   loop() {
     this.logic();
     this.render();
+    this.enemyMovement()
+    this.enemyAnimation()
+
+    this.deathFrame++;
+    if (this.deathFrame == 5) {
+      this.deathFrame = 0
+    }
+    if (this.deathFrame == 1) this.deathAnimation()
   }
 
   reset() {
-    //game.start();
-    this.frame = 0;
-    player = new Player(112, 210)
-    enemy = new Enemy(32, 46)
-    for (var i = 0; i < 50; i++) {
-      enemy.addEnemy();
-    }
-    sweeper = new Sweeper(111, 20);
-    sweeperBullet = new SweeperBullet(sweeper.x, sweeper.y);
-    //sweeper.shoot();
+    location.reload();
   }
 
   /**
@@ -106,6 +102,7 @@ class Game {
   }
 
   deathAnimation() {
+    //console.log(player.explodingFrames)
     if (player.exploding == true) {
       player.explode();
     }
@@ -117,14 +114,16 @@ class Game {
       //player.lives -= 1;
       player.exploding = false;
       player.explodingFrames = 20;
-      if (player.alive && !player.exploding) sweeper.shoot();
+      if (player.alive && !player.exploding &&
+        sweeper.bullets.length < sweeper.maxBullets) sweeper.shoot();
+      if (player.alive && !player.exploding) enemy.shoot()
 
       if (player.alive) {
         player.sprite = sprites.player;
         player.x = 112;
       } else {
         player.sprite = sprites.playerDead;
-        player.ghosted = true
+        player.ghosted = true;
       }
     }
   }
@@ -134,53 +133,55 @@ class Game {
   }
 
   enemyAnimation() {
+    let frame1 = 30
+    let frame2 = 60
     for (var i = 0; i < enemy.enemies.length; i++) {
       if (enemy.enemies[i].id < 10) {
-        if (enemy.enemies[i].frame == 2) {
+        if (enemy.enemies[i].frame == frame2) {
           enemy.enemies[i].sprite = sprites.enemy5frame2;
           enemy.enemies[i].frame = 0;
         }
-        if (enemy.enemies[i].frame == 1) {
+        if (enemy.enemies[i].frame == frame1) {
           enemy.enemies[i].sprite = sprites.enemy5;
         }
         enemy.enemies[i].animation();
       }
       if (enemy.enemies[i].id > 9 && enemy.enemies[i].id < 20) {
-        if (enemy.enemies[i].frame == 2) {
+        if (enemy.enemies[i].frame == frame2) {
           enemy.enemies[i].sprite = sprites.enemy4frame2;
           enemy.enemies[i].frame = 0;
         }
-        if (enemy.enemies[i].frame == 1) {
+        if (enemy.enemies[i].frame == frame1) {
           enemy.enemies[i].sprite = sprites.enemy4;
         }
         enemy.enemies[i].animation();
       }
       if (enemy.enemies[i].id > 19 && enemy.enemies[i].id < 30) {
-        if (enemy.enemies[i].frame == 2) {
+        if (enemy.enemies[i].frame == frame2) {
           enemy.enemies[i].sprite = sprites.enemy3frame2;
           enemy.enemies[i].frame = 0;
         }
-        if (enemy.enemies[i].frame == 1) {
+        if (enemy.enemies[i].frame == frame1) {
           enemy.enemies[i].sprite = sprites.enemy3;
         }
         enemy.enemies[i].animation();
       }
       if (enemy.enemies[i].id > 29 && enemy.enemies[i].id < 40) {
-        if (enemy.enemies[i].frame == 2) {
+        if (enemy.enemies[i].frame == frame2) {
           enemy.enemies[i].sprite = sprites.enemy2frame2;
           enemy.enemies[i].frame = 0;
         }
-        if (enemy.enemies[i].frame == 1) {
+        if (enemy.enemies[i].frame == frame1) {
           enemy.enemies[i].sprite = sprites.enemy2;
         }
         enemy.enemies[i].animation();
       }
       if (enemy.enemies[i].id > 39 && enemy.enemies[i].id < 50) {
-        if (enemy.enemies[i].frame == 2) {
+        if (enemy.enemies[i].frame == frame2) {
           enemy.enemies[i].sprite = sprites.enemy1frame2;
           enemy.enemies[i].frame = 0;
         }
-        if (enemy.enemies[i].frame == 1) {
+        if (enemy.enemies[i].frame == frame1) {
           enemy.enemies[i].sprite = sprites.enemy1;
         }
         enemy.enemies[i].animation();

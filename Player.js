@@ -29,23 +29,19 @@ class Player {
       if (bullet.y < -4) {
         this.bullets.splice(i, 1);
       }
-      if (
-        bullet.x < sweeper.x + sweeper.sprite.width &&
+      if (bullet.x < sweeper.x + sweeper.sprite.width &&
         bullet.x + playerBullet.width > sweeper.x &&
         bullet.y < sweeper.y + sweeper.sprite.height &&
         bullet.y + sweeper.sprite.height > sweeper.y + 8 &&
-        sweeper.alive
-      ) {
+        sweeper.alive) {
         this.bullets.splice(i, 1);
         sweeper.dieing = true;
       }
       for (var j = 0; j < enemy.enemies.length; j++) {
-        if (
-          bullet.x < enemy.enemies[j].x + enemy.enemies[j].width &&
+        if (bullet.x < enemy.enemies[j].x + enemy.enemies[j].width &&
           bullet.x + playerBullet.width > enemy.enemies[j].x &&
           bullet.y < enemy.enemies[j].y + enemy.enemies[j].height &&
-          bullet.y + enemy.enemies[j].height > enemy.enemies[j].y
-        ) {
+          bullet.y + enemy.enemies[j].height > enemy.enemies[j].y) {
           this.bullets.splice(i, 1);
           enemy.enemies.splice(j, 1);
         }

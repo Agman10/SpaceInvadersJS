@@ -6,7 +6,7 @@ class Enemy {
     constructor(x, y, id = 0) {
         this.x = x;
         this.y = y;
-        this.frame = 2;
+        this.frame = 30;
         this.width = 11;
         this.height = 8;
         this.enemies = new Array();
@@ -22,34 +22,53 @@ class Enemy {
         this.rows = 5;
         this.perRow = 10;
         this.id = id;
+        this.moveFrame = 0;
     }
 
     update() {
-
-        for (var i = 0; i < this.enemies.length; i++) {
-            if (player.alive) {
-                //this.enemies[i].move(1)
-                if (this.enemies[i].x == 0) {
-                    this.enemies[i].direction = "right";
-                    this.enemies[i].y += 8
-                }
-                if (this.enemies[i].direction == "right") {
-                    this.enemies[i].move(1)
-                }
-                if (this.enemies[i].direction == "left") {
-                    this.enemies[i].move(-1)
-                }
-                if (this.enemies[i].x == 213) {
-                    this.enemies[i].direction = "left";
-                    this.enemies[i].y += 8
-                }
-                for (var j = 0; j < this.bullets.length; j++) {
-                    let bullet = this.bullets[j];
-                    //let sweeperBullet = sweeper.bullets[i];
-                    if (bullet.y > 256) {
-                        this.bullets.splice(j, 1);
-                        this.shoot();
+        this.moveFrame++;
+        if (this.moveFrame == 2) {
+            this.moveFrame = 0
+        }
+        if (this.moveFrame == 1) {
+            for (var i = 0; i < this.enemies.length; i++) {
+                if (player.alive) {
+                    //this.enemies[i].move(1)
+                    if (this.enemies[i].x == 0) {
+                        this.enemies[i].direction = "right";
+                        this.enemies[i].y += 8
                     }
+                    if (this.enemies[i].direction == "right") {
+                        this.enemies[i].move(1)
+                    }
+                    if (this.enemies[i].direction == "left") {
+                        this.enemies[i].move(-1)
+                    }
+                    if (this.enemies[i].x == 213) {
+                        this.enemies[i].direction = "left";
+                        this.enemies[i].y += 8
+                    }
+
+
+                }
+            }
+        }
+        if (player.alive) {
+            for (var j = 0; j < this.bullets.length; j++) {
+                let bullet = this.bullets[j];
+                //let sweeperBullet = sweeper.bullets[i];
+                if (bullet.y > 256) {
+                    this.bullets.splice(j, 1);
+                    this.shoot();
+
+                }
+                if (bullet.x < player.x + player.sprite.width &&
+                    bullet.x + playerBullet.width > player.x &&
+                    bullet.y < player.y + player.sprite.height &&
+                    bullet.y + player.sprite.height > player.y) {
+                    this.bullets.splice(j, 1);
+                    player.hit();
+                    //this.shoot();
                 }
             }
         }
@@ -65,6 +84,10 @@ class Enemy {
             if (enemy.id == id) return enemy
         }
         return false
+    }
+
+    bulletUpdate() {
+
     }
     shoot() {
         var possibleLocations = []
