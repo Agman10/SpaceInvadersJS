@@ -6,7 +6,6 @@ class Enemy {
     constructor(x, y, id = 0) {
         this.x = x;
         this.y = y;
-        this.frame = 30;
         this.width = 11;
         this.height = 8;
         this.enemies = new Array();
@@ -23,6 +22,8 @@ class Enemy {
         this.perRow = 10;
         this.id = id;
         this.moveFrame = 0;
+        this.frame = 0;
+        this.maxframe = 30;
     }
 
     update() {
@@ -71,6 +72,17 @@ class Enemy {
                     //this.shoot();
                 }
             }
+            for (var l = 0; l < this.enemies.length; l++) {
+                let body = this.enemies[l];
+            if (body.x < player.x + player.sprite.width &&
+                body.x + player.sprite.width > player.x &&
+                body.y < player.y + player.sprite.height &&
+                body.y + player.sprite.height > player.y) {
+                //this.bullets.splice(j, 1);
+                player.die();
+                //this.shoot();
+            }
+        }
         }
     }
 

@@ -36,6 +36,7 @@ class Player {
         sweeper.alive) {
         this.bullets.splice(i, 1);
         sweeper.dieing = true;
+        this.points++;
       }
       for (var j = 0; j < enemy.enemies.length; j++) {
         if (bullet.x < enemy.enemies[j].x + enemy.enemies[j].width &&
@@ -44,6 +45,10 @@ class Player {
           bullet.y + enemy.enemies[j].height > enemy.enemies[j].y) {
           this.bullets.splice(i, 1);
           enemy.enemies.splice(j, 1);
+          this.points++;
+
+          //clearInterval(game.enemyMovement())
+          //setInterval(() => game.enemyMovement(), 235 / 60);
         }
       }
       // this is collision when player bullet hits sweeper bullet DO NOT REMOVE
@@ -96,6 +101,15 @@ class Player {
   hit() {
     if (!this.exploding && this.alive) {
       this.lives -= 1;
+      //this.x = 112;
+      this.exploding = true;
+      //this.explode()
+    }
+  }
+
+  die() {
+    if (!this.exploding && this.alive) {
+      this.lives -= this.lives;
       //this.x = 112;
       this.exploding = true;
       //this.explode()

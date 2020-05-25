@@ -24,6 +24,7 @@ class Game {
       //}
     });
     setInterval(() => this.loop(), 1000 / 60);
+    //setInterval(() => this.enemyMovement(), 235 / 60);
   }
 
   stop() { }
@@ -31,8 +32,8 @@ class Game {
   loop() {
     this.logic();
     this.render();
-    this.enemyMovement()
-    this.enemyAnimation()
+    this.enemyMovement();
+    this.enemyAnimation();
 
     this.deathFrame++;
     if (this.deathFrame == 5) {
@@ -206,7 +207,6 @@ class Game {
     sweeper.bullets.forEach(bullet => {
       bullet.draw();
     });
-    enemyBullet.draw()
     enemy.enemies.forEach(enemy => {
       enemy.draw();
 
@@ -216,8 +216,8 @@ class Game {
       sweeper.draw();
     }
 
-    /* ctx.font = "10px Arial";
+    ctx.font = "10px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText("Lives: " + player.lives, 4, 10); */
+    ctx.fillText("Score:" + player.points, 5, 240);
   }
 }
