@@ -24,7 +24,7 @@ class Game {
       //}
     });
     setInterval(() => this.loop(), 1000 / 60);
-    //setInterval(() => this.enemyMovement(), 235 / 60);
+    setInterval(() => this.enemyMovement(), 100 / 60);
   }
 
   stop() { }

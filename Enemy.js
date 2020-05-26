@@ -24,14 +24,21 @@ class Enemy {
         this.moveFrame = 0;
         this.frame = 0;
         this.maxframe = 30;
+        this.speed = 7
     }
 
     update() {
+        if (player.kills == 10) this.speed = 6;
+        if (player.kills == 20) this.speed = 5;
+        if (player.kills == 30) this.speed = 4;
+        if (player.kills == 40) this.speed = 3;
+        if (player.kills == 49) this.speed = 2;
+        
         this.moveFrame++;
-        if (this.moveFrame == 2) {
+        if (this.moveFrame >= this.speed) {
             this.moveFrame = 0
         }
-        if (this.moveFrame == 1) {
+        if (this.moveFrame == 0) {
             for (var i = 0; i < this.enemies.length; i++) {
                 if (player.alive) {
                     //this.enemies[i].move(1)
@@ -60,7 +67,7 @@ class Enemy {
                 //let sweeperBullet = sweeper.bullets[i];
                 if (bullet.y > 256) {
                     this.bullets.splice(j, 1);
-                    this.shoot();
+                    if (player.alive && !player.exploding) this.shoot();
 
                 }
                 if (bullet.x < player.x + player.sprite.width &&

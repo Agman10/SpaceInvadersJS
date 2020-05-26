@@ -20,6 +20,7 @@ class Player {
     this.ghostY = 0;
     this.ghosted = false;
     this.points = 0;
+    this.kills = 0;
   }
 
   update() {
@@ -46,7 +47,7 @@ class Player {
           this.bullets.splice(i, 1);
           enemy.enemies.splice(j, 1);
           this.points++;
-
+          this.kills++;
           //clearInterval(game.enemyMovement())
           //setInterval(() => game.enemyMovement(), 235 / 60);
         }
@@ -128,7 +129,7 @@ class Player {
 
   dead() {
     player.alive = false;
-
+    this.kills = 0;
   }
 }
 
