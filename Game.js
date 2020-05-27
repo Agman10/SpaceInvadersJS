@@ -13,12 +13,13 @@ class Game {
         //enemy.addEnemy();
       }
       if (!player.alive) this.reset();
+      if(!sweeper.alive && enemy.enemies.length == 0) this.newGame();
     });
     document.addEventListener("KeyA", () => {
       //if (sweeper.bullets.length < sweeper.maxBullets) {
       //enemy.enemies.pop();
-      //enemy.enemies.splice(0, 1);
-      enemy.shoot()
+      //enemy.enemies.splice(0, 50);
+      //enemy.shoot()
       console.log(enemy.enemies.length)
       //sweeper.shoot();
       //}
@@ -190,6 +191,33 @@ class Game {
     }
   }
 
+  newGame(){
+    player.kills = 0;
+    enemy = new Enemy(32, 46)
+    sweeper = new Sweeper(111, 20);
+    for (var i = 0; i < 50; i++) {
+      enemy.addEnemy();
+    }
+    for (var i = 0; i < 10; i++) {
+        enemy.enemies[i].sprite = sprites.enemy5;
+    }
+    for (var i = 10; i < 20; i++) {
+        enemy.enemies[i].sprite = sprites.enemy4;
+    }
+    for (var i = 20; i < 30; i++) {
+        enemy.enemies[i].sprite = sprites.enemy3;
+    }
+    for (var i = 30; i < 40; i++) {
+        enemy.enemies[i].sprite = sprites.enemy2;
+    }
+    for (var i = 40; i < 50; i++) {
+        enemy.enemies[i].sprite = sprites.enemy1;
+    }
+    enemy.shoot();
+    sweeper.shoot();
+  
+  }
+
   render() {
     Renderer.clear();
     player.draw();
@@ -219,5 +247,31 @@ class Game {
     ctx.font = "10px Arial";
     ctx.fillStyle = "white";
     ctx.fillText("Score:" + player.points, 5, 240);
+      
+    if (!player.alive) {
+      ctx.fillStyle = "black";
+      //ctx.fillRect(60, 80, 110, 45);
+      ctx.fillRect(60, 80, 110, 25);
+      ctx.fillRect(62, 110, 105, 15);
+
+      ctx.font = "20px Arial";
+      ctx.fillStyle = "white";
+      ctx.fillText("Game Over", 62, 100);
+      ctx.font = "10px Arial";
+      ctx.fillText("Press space to restart", 65, 120);
+    }
+
+    if(!sweeper.alive && enemy.enemies.length == 0){
+      ctx.fillStyle = "black";
+      //ctx.fillRect(42, 80, 150, 45);
+      ctx.fillRect(42, 80, 150, 25);
+      ctx.fillRect(60, 110, 116, 15);
+
+      ctx.font = "20px Arial";
+      ctx.fillStyle = "white";
+      ctx.fillText("Level Complete!", 45, 100);
+      ctx.font = "10px Arial";
+      ctx.fillText("Press space to continue", 65, 120);
+    }
   }
 }

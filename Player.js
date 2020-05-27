@@ -85,13 +85,6 @@ class Player {
     /* if (this.lives >= 1) Renderer.img(this.lifeSprite, 5, 10);
     if (this.lives >= 2) Renderer.img(this.lifeSprite, 7 + this.lifeSprite.width, 10);
     if (this.lives >= 3) Renderer.img(this.lifeSprite, 9 + this.lifeSprite.width * 2, 10); */
-
-
-    if (!this.alive) {
-      ctx.font = "20px Arial";
-      ctx.fillStyle = "white";
-      ctx.fillText("Game Over", 65, 100);
-    }
   }
 
   shoot() {
